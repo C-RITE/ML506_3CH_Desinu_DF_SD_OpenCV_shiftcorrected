@@ -1,0 +1,17 @@
+Image width:		768
+Image height:		496
+Image width offset:	100
+Image height offset:	6
+Channel 1:		On
+Channel 2:		On
+Channel 3:		Off
+Brightness 1:		144
+Contrast 1:		32, 625.98mV
+Brightness 2:		144
+Contrast 2:		32, 625.98mV
+Brightness 3:		144
+Contrast 3:		32, 625.98mV
+fast scanning:		FS/BS
+Back scan shift:	232
+Resonant scanner FOV:	91 (uint)
+Slow scanner FOV:	6 (uint)

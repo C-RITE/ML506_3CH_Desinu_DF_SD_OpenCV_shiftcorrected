@@ -1,0 +1,513 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ML506.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\ML506.ico"
+IDR_ML506TYPE           ICON                    "res\\ML506Doc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  24, 23
+BEGIN
+    BUTTON      ID_CAMERA_CONNECT
+    BUTTON      ID_CAMERA_DISCONNECT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        ID_NEW_DCF
+        MENUITEM "&Load",                       ID_LOAD_DCF
+        MENUITEM "&Save",                       ID_SAVE_DCF
+        MENUITEM "&Desinusoid Setup",           ID_DESINUSOID
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Camera"
+    BEGIN
+        MENUITEM "&Connect",                    ID_CAMERA_CONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "Disconnect",                  ID_CAMERA_DISCONNECT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ML506...",             ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ML506"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "ML506 Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2009",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_DIALOG_CH3 DIALOGEX 0, 0, 453, 327
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Real-time video, channel-3"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_FPS_LABLE1,7,295,64,14
+    RTEXT           "Static",IDC_FPS_LABLE2,377,299,76,21,NOT WS_VISIBLE
+    CONTROL         "Show histogram",IDC_SHOW_HIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,188,304,89,16
+    LTEXT           "",IDC_HIST_INFO,306,300,65,20
+    LTEXT           "",IDC_HIST_INFO2,359,300,65,20
+    CONTROL         "Desinusoid",IDC_DESINUSOID3,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,294,307,75,13
+    LTEXT           "Static",IDC_IMGSIZE,87,308,67,12
+END
+
+IDD_DIALOG_CH1 DIALOGEX 0, 0, 466, 321
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Real-time video, channel-1"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "",IDC_FPS_LABLE,7,307,80,8
+    RTEXT           "",IDC_SLIDER1,390,296,68,18,NOT WS_VISIBLE
+    CONTROL         "Show histogram",IDC_SHOW_HIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,195,298,82,16
+    LTEXT           "",IDC_HIST_INFO2,353,301,67,13
+    LTEXT           "",IDC_HIST_INFO,328,299,67,13
+    CONTROL         "Desinusoid",IDC_DESINUSOID,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,272,297,82,16
+    LTEXT           "IMAGE SIZE",IDC_IMGSIZE,131,302,58,12
+END
+
+IDD_DIALOG_CH2 DIALOGEX 0, 0, 454, 311
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Real-time video, channel-2"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_FPS_LABLE1,7,292,59,12
+    RTEXT           "Static",IDC_FPS_LABLE2,363,291,75,13,NOT WS_VISIBLE
+    CONTROL         "Show histogram",IDC_SHOW_HIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,195,286,70,18
+    LTEXT           "",IDC_HIST_INFO,278,289,64,15
+    LTEXT           "",IDC_HIST_INFO2,336,289,64,15
+    CONTROL         "Desinusoid",IDC_DESINUSOID2,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,263,291,61,13
+    LTEXT           "Static",IDC_IMGSIZE,115,292,66,12
+END
+
+IDD_SINUSOIDAL_CAL DIALOGEX 0, 0, 568, 322
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Sinusoidal Calibration"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,511,301,50,14
+    PUSHBUTTON      "Apply",IDC_APPLY,7,302,49,13
+    CONTROL         "Thresholding",IDC_THRESHOLD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,304,57,11
+    SCROLLBAR       IDC_SPARCITY_S,238,305,147,10,WS_DISABLED
+    LTEXT           "0.8",IDC_SPARCITY_T,393,306,27,9
+END
+
+IDD_DLG_DESINUSOID DIALOGEX 0, 0, 658, 426
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Desinusoiding Setup"
+FONT 8, "MS Sans Serif", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,591,379,60,18
+    PUSHBUTTON      "Cancel",IDCANCEL,591,401,60,18
+    GROUPBOX        "Grid Position -- X",IDC_FRAME_X,7,7,282,140
+    GROUPBOX        "Grid Position -- Y",IDC_FRAME_Y,369,7,282,140
+    GROUPBOX        "Warpped image",IDC_FRAME_WARP,7,155,282,215
+    GROUPBOX        "Unwarpped image",IDC_FRAME_UNWARP,369,155,282,215
+    RTEXT           "Pixel Clock (Hz)",IDC_FREQ_HORZ,9,382,50,13
+    RTEXT           "H-Sync (Hz)",IDC_FREQ_VERT,9,405,50,13
+    EDITTEXT        IDC_EDIT_FREQ_HORZ,61,381,58,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_FREQ_VERT,61,402,58,14,ES_AUTOHSCROLL | WS_DISABLED
+    RTEXT           "Grid Size (deg)",IDC_GRID_SIZE,129,382,50,13
+    RTEXT           "Grid Number",IDC_GRID_NUMBER,129,405,50,13
+    EDITTEXT        IDC_EDIT_GRID_SIZE,181,381,33,13,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_GRID_NUMB,181,402,33,13,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Load Grids File",IDC_LOAD_GRIDS,221,379,64,16
+    CONTROL         "",IDC_FRAME_ID,"msctls_trackbar32",TBS_NOTICKS | TBS_ENABLESELRANGE | WS_DISABLED | WS_TABSTOP,216,402,108,16
+    CONTROL         "H/V grids",IDC_HV_GRID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,299,382,46,10
+    PUSHBUTTON      "Start Frame",IDC_START_FRAME,356,379,64,16,WS_DISABLED
+    PUSHBUTTON      "Desinusoid",IDC_RUN_DESINU,421,379,64,16,WS_DISABLED
+    PUSHBUTTON      "End Frame",IDC_END_FRAME,356,399,64,16,WS_DISABLED
+    PUSHBUTTON      "Save LUT",IDC_SAVE_LUT,421,398,64,16,WS_DISABLED
+    RTEXT           "Pix/Deg-X:",IDC_PIX_PER_DEGX,489,382,37,13
+    RTEXT           "Pix/Deg-Y:",IDC_PIX_PER_DEGY,489,403,37,13
+    EDITTEXT        IDC_PIX_PER_DEGX1,528,381,58,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_PIX_PER_DEGY1,527,400,58,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "",IDC_FRAME_ID_MSG,314,399,40,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "ML506 MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "ML506"
+            VALUE "LegalCopyright", "Copyright (C) 2009"
+            VALUE "OriginalFilename", "ML506.EXE"
+            VALUE "ProductName", "ML506 Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DIALOG_CH3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 446
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 320
+    END
+
+    IDD_DIALOG_CH1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 458
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 314
+    END
+
+    IDD_DIALOG_CH2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 447
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 304
+    END
+
+    IDD_SINUSOIDAL_CAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 561
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 315
+    END
+
+    IDD_DLG_DESINUSOID, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 651
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 419
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_CALDESINU      HTML                    "CalDesinu.htm"
+IDR_HTML_CALDESINU1     HTML                    "res\\html_cal.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "ML506\n\nML506\n\n\nML506.Document\nML506 Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ML506"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Create a new Xilinx digitizer file\\New"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_CAMERA_CONNECT       "Connect to camera source\nConnect"
+    ID_CAMERA_DISCONNECT    "Disconnect camera\nDisconnect"
+    ID_SAVE_DCF             "Save the current Xilinx digitizer file\nSave"
+    ID_LOAD_DCF             "Load a Xilinx digitizer file\nLoad"
+    ID_NEW_DCF              "Create a new Xilinx digitizer file\nNew"
+    ID_Menu                 "ID_SAVE_DCF"
+    ID_DESINUSOID           "Setup Desinusoiding"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\ML506.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,147 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ML506 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ML506.res" /d "_DEBUG" /d "_AFXDLL" "D:\projects\ML506_Primate\ML506.rc"" 
+Creating temporary file "C:\DOCUME~1\qyang.BRP\LOCALS~1\Temp\RSP8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/ML506.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\projects\ML506_Primate\FolderDlg.cpp"
+"D:\projects\ML506_Primate\LiveVideoView.cpp"
+"D:\projects\ML506_Primate\MainFrm.cpp"
+"D:\projects\ML506_Primate\ML506.cpp"
+"D:\projects\ML506_Primate\ML506Doc.cpp"
+"D:\projects\ML506_Primate\ML506View.cpp"
+"D:\projects\ML506_Primate\StdAfx.cpp"
+"D:\projects\ML506_Primate\virtex5bmd.cpp"
+"D:\projects\ML506_Primate\WRITEAVI.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\qyang.BRP\LOCALS~1\Temp\RSP8.tmp" 
+Creating temporary file "C:\DOCUME~1\qyang.BRP\LOCALS~1\Temp\RSP9.tmp" with contents
+[
+wdapi1000.lib vfw32.lib winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ML506.pdb" /debug /machine:I386 /out:"Debug/ML506.exe" /pdbtype:sept /libpath:"..\..\..\windriver\lib\x86\\" 
+.\Debug\FolderDlg.obj
+.\Debug\LiveVideoView.obj
+.\Debug\MainFrm.obj
+.\Debug\ML506.obj
+.\Debug\ML506Doc.obj
+.\Debug\ML506View.obj
+.\Debug\StdAfx.obj
+.\Debug\virtex5bmd.obj
+.\Debug\WRITEAVI.OBJ
+.\Debug\ML506.res
+]
+Creating command line "link.exe @C:\DOCUME~1\qyang.BRP\LOCALS~1\Temp\RSP9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+FolderDlg.cpp
+LiveVideoView.cpp
+d:\projects\ml506_primate\livevideoview.cpp(102) : warning C4101: 'rect' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(212) : warning C4101: 'reg' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(212) : warning C4101: 'regWData' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(212) : warning C4101: 'ctrlBits' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(212) : warning C4101: 'regRData' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(212) : warning C4101: 'weaBIT' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(256) : warning C4101: 'regWData' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(256) : warning C4101: 'ctrlBits' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(256) : warning C4101: 'regRData' : unreferenced local variable
+d:\projects\ml506_primate\livevideoview.cpp(340) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+MainFrm.cpp
+ML506.cpp
+ML506Doc.cpp
+d:\projects\ml506_primate\ml506doc.cpp(146) : warning C4101: 'imageRef' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(146) : warning C4101: 'imageTar' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(343) : warning C4101: 'l_time' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(344) : warning C4101: 'l_tick' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(442) : warning C4101: 'vsync_bit' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(557) : warning C4101: 'x0' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(629) : warning C4101: 'turnpt' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(629) : warning C4101: 'length' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(629) : warning C4101: 'scannerBuf' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(978) : warning C4101: 'x1' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(978) : warning C4101: 'x2' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(978) : warning C4101: 'retVal' : unreferenced local variable
+d:\projects\ml506_primate\ml506doc.cpp(1030) : warning C4101: 'stemp' : unreferenced local variable
+ML506View.cpp
+d:\projects\ml506_primate\ml506view.cpp(782) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(788) : warning C4244: '=' : conversion from 'const double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(802) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(813) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(827) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(830) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(833) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(840) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(852) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(864) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(876) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(888) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(900) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(913) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(923) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(940) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(951) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(969) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(982) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(996) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1009) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1029) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1057) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1060) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1299) : error C2065: 'sprintf_s' : undeclared identifier
+d:\projects\ml506_primate\ml506view.cpp(1340) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1353) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1366) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1379) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1392) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1405) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1418) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1432) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1445) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(1461) : warning C4244: '=' : conversion from 'double' to 'long', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2237) : warning C4244: 'argument' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2350) : warning C4244: 'argument' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2394) : warning C4244: 'argument' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2452) : warning C4244: 'argument' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2486) : warning C4244: 'argument' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(2692) : warning C4018: '>' : signed/unsigned mismatch
+d:\projects\ml506_primate\ml506view.cpp(3275) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(3283) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+d:\projects\ml506_primate\ml506view.cpp(4014) : error C2039: 'Trim' : is not a member of 'CString'
+        c:\program files\microsoft visual studio\vc98\mfc\include\afx.h(368) : see declaration of 'CString'
+d:\projects\ml506_primate\ml506view.cpp(4020) : error C2039: 'Trim' : is not a member of 'CString'
+        c:\program files\microsoft visual studio\vc98\mfc\include\afx.h(368) : see declaration of 'CString'
+d:\projects\ml506_primate\ml506view.cpp(4026) : error C2039: 'Trim' : is not a member of 'CString'
+        c:\program files\microsoft visual studio\vc98\mfc\include\afx.h(368) : see declaration of 'CString'
+d:\projects\ml506_primate\ml506view.cpp(4811) : warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+StdAfx.cpp
+virtex5bmd.cpp
+D:\projects\ML506_Primate\virtex5bmd.cpp(56) : warning C4101: 'loAddr' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(63) : warning C4101: 'dwTotalCount' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(62) : warning C4101: 'x1' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(63) : warning C4101: 'i' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(62) : warning C4101: 'x2' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(56) : warning C4101: 'hiAddr' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(63) : warning C4101: 'j' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(63) : warning C4101: 'k' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(63) : warning C4101: 'm' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(56) : warning C4101: 'StartAddrIndex' : unreferenced local variable
+D:\projects\ML506_Primate\virtex5bmd.cpp(214) : error C2065: 'sprintf_s' : undeclared identifier
+D:\projects\ML506_Primate\virtex5bmd.cpp(1149) : warning C4018: '<' : signed/unsigned mismatch
+D:\projects\ML506_Primate\virtex5bmd.cpp(1314) : warning C4018: '<' : signed/unsigned mismatch
+D:\projects\ML506_Primate\virtex5bmd.cpp(1326) : warning C4018: '<' : signed/unsigned mismatch
+D:\projects\ML506_Primate\virtex5bmd.cpp(1625) : warning C4305: '=' : truncation from 'const double' to 'float'
+WRITEAVI.CPP
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ML506.exe - 5 error(s), 80 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,67 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KP_PCI", "..\..\kp_pci\x86\msdev_2003\kp_pci.vcproj", "{C21C9453-F33E-4E0C-B282-580FE59D0A4D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PCI_DIAG", "pci_diag.vcproj", "{0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}"
+EndProject
+Global
+        GlobalSection(SolutionConfiguration) = preSolution
+                ConfigName.0 = Debug
+                ConfigName.1 = Release
+                ConfigName.2 = winnt checked
+                ConfigName.3 = winnt free
+                ConfigName.4 = win98 checked
+                ConfigName.5 = win98 free
+                ConfigName.6 = win2k checked
+                ConfigName.7 = win2k free
+                ConfigName.8 = winxp checked
+                ConfigName.9 = winxp free
+        EndGlobalSection
+        GlobalSection(ProjectDependencies) = postSolution
+        EndGlobalSection
+        GlobalSection(ProjectConfiguration) = postSolution
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.Debug.ActiveCfg = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.Debug.Build.0 = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.Release.ActiveCfg = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.Release.Build.0 = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winnt checked.ActiveCfg = winnt checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winnt checked.Build.0 = winnt checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winnt free.ActiveCfg = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winnt free.Build.0 = winnt free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win98 checked.ActiveCfg = win98 checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win98 checked.Build.0 = win98 checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win98 free.ActiveCfg = win98 free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win98 free.Build.0 = win98 free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win2k checked.ActiveCfg = win2k checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win2k checked.Build.0 = win2k checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win2k free.ActiveCfg = win2k free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.win2k free.Build.0 = win2k free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winxp checked.ActiveCfg = winxp checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winxp checked.Build.0 = winxp checked|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winxp free.ActiveCfg = winxp free|Win32
+                {C21C9453-F33E-4E0C-B282-580FE59D0A4D}.winxp free.Build.0 = winxp free|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.Debug.ActiveCfg = Debug|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.Debug.Build.0 = Debug|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.Release.ActiveCfg = Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.Release.Build.0 = Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winnt checked.ActiveCfg = winnt Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winnt checked.Build.0 = winnt Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winnt free.ActiveCfg = winnt Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winnt free.Build.0 = winnt Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win98 checked.ActiveCfg = win98 Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win98 checked.Build.0 = win98 Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win98 free.ActiveCfg = win98 Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win98 free.Build.0 = win98 Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win2k checked.ActiveCfg = win2k Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win2k checked.Build.0 = win2k Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win2k free.ActiveCfg = win2k Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.win2k free.Build.0 = win2k Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winxp checked.ActiveCfg = winxp Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winxp checked.Build.0 = winxp Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winxp free.ActiveCfg = winxp Release|Win32
+                {0E7DD049-4678-4ED1-8F40-4FEB6CE9C6CB}.winxp free.Build.0 = winxp Release|Win32
+        EndGlobalSection
+        GlobalSection(ExtensibilityGlobals) = postSolution
+        EndGlobalSection
+        GlobalSection(ExtensibilityAddIns) = postSolution
+        EndGlobalSection
+EndGlobal

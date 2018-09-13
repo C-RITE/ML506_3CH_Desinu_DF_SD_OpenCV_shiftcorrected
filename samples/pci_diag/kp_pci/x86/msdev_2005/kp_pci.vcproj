@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+        ProjectType="Visual C++"
+        Version="8.00"
+        Name="KP_PCI"
+        SccProjectName=""
+        SccLocalPath=""
+        Keyword="MakeFileProj">
+        <Platforms>
+                <Platform
+                        Name="Win32"/>
+        </Platforms>
+        <Configurations>
+                <Configuration
+                        Name="winnt checked|Win32"
+                        OutputDirectory=".\objchk_winnt"
+                        IntermediateDirectory=".\objchk_winnt"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winnt checked"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winnt checked /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="winnt free|Win32"
+                        OutputDirectory=".\objfre_winnt"
+                        IntermediateDirectory=".\objfre_winnt"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winnt free"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winnt free /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="win98 checked|Win32"
+                        OutputDirectory=".\objchk_win98"
+                        IntermediateDirectory=".\objchk_win98"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win98 checked"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win98 checked /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="win98 free|Win32"
+                        OutputDirectory=".\objfre_win98"
+                        IntermediateDirectory=".\objfre_win98"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win98 free"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win98 free /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="win2k checked|Win32"
+                        OutputDirectory=".\objchk_win2k"
+                        IntermediateDirectory=".\objchk_win2k"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win2k checked"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win2k checked /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="win2k free|Win32"
+                        OutputDirectory=".\objfre_win2k"
+                        IntermediateDirectory=".\objfre_win2k"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win2k free"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat win2k free /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="winxp checked|Win32"
+                        OutputDirectory=".\objchk_winxp"
+                        IntermediateDirectory=".\objchk_winxp"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winxp checked"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winxp checked /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+                <Configuration
+                        Name="winxp free|Win32"
+                        OutputDirectory=".\objfre_winxp"
+                        IntermediateDirectory=".\objfre_winxp"
+                        ConfigurationType="0"
+                        UseOfMFC="0"
+                        ATLMinimizesCRunTimeLibraryUsage="FALSE">
+                        <Tool
+                                Name="VCNMakeTool"
+                                BuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winxp free"
+                                ReBuildCommandLine="cd ..\.. &amp;&amp; ddk_make.bat winxp free /a"
+                                Output="KP_PCI.exe"/>
+                </Configuration>
+        </Configurations>
+        <Files>
+                <File
+                        RelativePath="..\..\kp_pci.c">
+                </File>
+                <File
+                        RelativePath="..\..\..\pci_lib.c">
+                </File>
+        </Files>
+        <Globals>
+        </Globals>
+</VisualStudioProject>
