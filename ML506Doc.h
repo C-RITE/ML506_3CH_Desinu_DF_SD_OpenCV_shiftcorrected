@@ -4,6 +4,7 @@
 #include "virtex5bmd.h"
 #include "vfw.h"
 #include "mmsystem.h"
+#include "utils/netcomm/SockListener.h"
 
 #if !defined(AFX_ML506DOC_H__DA98F54C_82CA_4552_938A_12A8DDEA211F__INCLUDED_)
 #define AFX_ML506DOC_H__DA98F54C_82CA_4552_938A_12A8DDEA211F__INCLUDED_
@@ -56,9 +57,13 @@ public:
 #endif
 
 protected:
-	DWORD   thdid_handle;
-	HANDLE  thd_handle;
+	DWORD   thdid_handle[2];
+	HANDLE  thd_handle[2];
 	static  DWORD WINAPI ThreadLoadData2FPGA(LPVOID pParam);
+	static DWORD WINAPI ThreadNetMsgProcess(LPVOID pParam);
+
+	HANDLE *m_eNetMsg;
+	CString *m_strNetRecBuff;
 
 // Generated message map functions
 protected:
@@ -71,6 +76,12 @@ protected:
 	afx_msg void OnUpdateSetupDesinusoid(CCmdUI* pCmdUI);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+
+
+private:
+	CSockListener *m_ncListener_IGUIDE;
+	CSockListener *m_ncListener_AO;
+
 };
 
 /////////////////////////////////////////////////////////////////////////////

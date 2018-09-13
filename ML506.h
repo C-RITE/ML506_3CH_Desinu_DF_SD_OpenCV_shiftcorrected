@@ -24,6 +24,7 @@
 #define  USER_MESSAGE_NEWFRAME      106
 #define  USER_MESSAGE_NEWOFFSET     107
 #define  USER_MESSAGE_FOV_CALIBRATION 108
+#define  IGUIDE_MESSAGE_SAVE		109
 
 /////////////////////////////////////////////////////////////////////////////
 // CML506App:

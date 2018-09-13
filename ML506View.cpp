@@ -40,7 +40,7 @@ extern BOOL				 g_bSampleSW;
 /* --------------------------------------------------
     VIRTEX5 configuration registers information
    -------------------------------------------------- */
-// Configuration registers information array 
+// Configuration registers information array
 WDC_REG gVIRTEX5_CfgRegs[] = {
     { WDC_AD_CFG_SPACE, PCI_VID, WDC_SIZE_16, WDC_READ_WRITE, "VID",
         "Vendor ID                  " },
@@ -101,7 +101,7 @@ WDC_REG gVIRTEX5_CfgRegs[] = {
 /* -----------------------------------------------
     VIRTEX5 run-time registers information
    ----------------------------------------------- */
-// Run-time registers information array 
+// Run-time registers information array
 WDC_REG gVIRTEX5_Regs[] = {
     { VIRTEX5_SPACE, VIRTEX5_DSCR_OFFSET, WDC_SIZE_32, WDC_READ_WRITE, "DSCR",
         "Device Control Status Register" },
@@ -150,9 +150,9 @@ WDC_REG gVIRTEX5_Regs[] = {
     { VIRTEX5_SPACE, VIRTEX5_LINECTRL_OFFSET, WDC_SIZE_32, WDC_READ_WRITE,
 	"LINECTRL", "Interrupr Line Control" },
     { VIRTEX5_SPACE, VIRTEX5_STIMULUS_LOC, WDC_SIZE_32, WDC_READ_WRITE,
-	"STIMLOC", "Stimulus Location" }, 
+	"STIMLOC", "Stimulus Location" },
     { VIRTEX5_SPACE, VIRTEX5_LASER_POWER, WDC_SIZE_32, WDC_READ_WRITE,
-	"LASERPOW", "Laser Power" } 
+	"LASERPOW", "Laser Power" }
     };
 
 #define VIRTEX5_REGS_NUM (sizeof(gVIRTEX5_Regs)/sizeof(gVIRTEX5_Regs[0]))
@@ -215,7 +215,7 @@ BEGIN_MESSAGE_MAP(CML506View, CView)
 	ON_NOTIFY(EN_MSGFILTER, ID_EDIT_BRIGHTNESS_B, UpdateBrightnessB)
 	ON_NOTIFY(EN_MSGFILTER, ID_EDIT_CONTRAST_B, UpdateContrastB)
 	ON_NOTIFY(EN_MSGFILTER, ID_EDIT_PCLOCK, UpdatePixelClock)
-	
+
 
 	//}}AFX_MSG_MAP
 	// Standard printing commands
@@ -353,7 +353,7 @@ CML506View::CML506View()
 	m_dacRegs[16] = 0x4B;
 	m_dacRegs[17] = 0x56;
 
-	
+
 	// setup ADC on-chip registers
 	m_adcTextID[0]  = ID_TEXT_0X00;
 	m_adcTextID[1]  = ID_TEXT_0X01;
@@ -641,7 +641,7 @@ CML506View::CML506View()
 	m_dacVals[14] = 0x00;		// power management
 
 	m_osx    = 430;
-	m_osy    = 20;	
+	m_osy    = 20;
 
 	m_strTitleName = "";
 	m_strAppName = "Xilinx ML506 Digitizer Controller - ";
@@ -659,7 +659,7 @@ CML506View::CML506View()
 
 
 CML506View::~CML506View()
-{	
+{
 	if (m_image != NULL) delete [] m_image;
 	if (m_pDlgR != NULL) {
 		m_pDlgR->DestroyWindow();
@@ -752,7 +752,7 @@ void CML506View::CreateADCregisters()
 	CString     msg;
 	int         i;
 
-	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);  
+	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);
 	for (i = 0; i < 24; i ++) {
 		// draw labels
 		rect.left   = 10;
@@ -774,7 +774,7 @@ void CML506View::CreateADCregisters()
 		m_adcEdit[i].LimitText(8);
 	}
 
-	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);  
+	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);
 	for (i = 24; i < 47; i ++) {
 		// draw labels
 		rect.left   = 10 + 2*(DLG_ITEM_WIDTH + DLG_ITEM_MARGIN_X);
@@ -804,7 +804,7 @@ void CML506View::CreateDACregisters()
 	CString     msg;
 	int         i;
 
-	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);  
+	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);
 	for (i = 0; i < 18; i ++) {
 		// draw labels
 		rect.left   = 10;
@@ -840,7 +840,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblImgSizeY.Create("Image Height", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_IMAGEHEIGHT);
 	rect.left   = rect.right + 5;
@@ -850,7 +850,7 @@ void CML506View::CreateGrabberParams()
 	m_scrImgSizeY.EnableWindow(FALSE);
 
 
-	rect.top    = rect.bottom + 15;  
+	rect.top    = rect.bottom + 15;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*1.5;
@@ -860,7 +860,7 @@ void CML506View::CreateGrabberParams()
 	m_chkChannelG.Create("2. Channel 2", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_CH_G);
 	rect.left   = rect.right + 5;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*1.5;
-	m_chkChannelB.Create("3. Channel 3", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_CH_B);	
+	m_chkChannelB.Create("3. Channel 3", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_CH_B);
 	m_chkChannelR.SetCheck(1);
 	m_chkChannelG.SetCheck(0);
 	m_chkChannelB.SetCheck(0);
@@ -874,7 +874,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 15;  
+	rect.top    = rect.bottom + 15;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblBrightnessR.Create("Brightness\tCh1, 0-255", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_BRIGHTNESS_R);
 	rect.left   = rect.right + 5;
@@ -886,7 +886,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblContrastR.Create("Contrast\t\tCh1, 0-127", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_CONTRAST_R);
 	rect.left   = rect.right + 5;
@@ -898,7 +898,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblBrightnessG.Create("Brightness\tCh2, 0-255", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_BRIGHTNESS_G);
 	rect.left   = rect.right + 5;
@@ -910,7 +910,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblContrastG.Create("Contrast\t\tCh2, 0-127", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_CONTRAST_G);
 	rect.left   = rect.right + 5;
@@ -922,7 +922,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblBrightnessB.Create("Brightness\tCh3, 0-255", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_BRIGHTNESS_B);
 	rect.left   = rect.right + 5;
@@ -934,7 +934,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblContrastB.Create("Contrast\t\tCh3, 0-127", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_CONTRAST_B);
 	rect.left   = rect.right + 5;
@@ -947,32 +947,32 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblOffsetX.Create("Img Offset-X (pixels)", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_OFFSETX);
 	rect.left   = rect.right + 5;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2+50;
 	m_scrOffsetX.Create(WS_CHILD|SBS_HORZ|WS_VISIBLE|WS_TABSTOP, rect, this, ID_SCROLL_OFFSETX);
 	m_scrOffsetX.SetScrollRange(0, 1023, TRUE);
-	
+
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblOffsetY.Create("Img Offset-Y (lines)", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_OFFSETY);
 	rect.left   = rect.right + 5;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2+50;
 	m_scrOffsetY.Create(WS_CHILD|SBS_HORZ|WS_VISIBLE|WS_TABSTOP, rect, this, ID_SCROLL_OFFSETY);
 	m_scrOffsetY.SetScrollRange(0, 255, TRUE);
-	
+
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH+20;
-	rect.top    = rect.bottom;  
+	rect.top    = rect.bottom;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
-//	m_chkBidirection.Create("Dual FS/BS", WS_CHILD|BS_CHECKBOX|!WS_VISIBLE, rect, this, ID_CHECK_SAMPLE_BOTH);	
+//	m_chkBidirection.Create("Dual FS/BS", WS_CHILD|BS_CHECKBOX|!WS_VISIBLE, rect, this, ID_CHECK_SAMPLE_BOTH);
 	m_chkBidirection.Create("Desinusoid", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_SAMPLE_BOTH);
-	rect.top    = rect.top + 5;  
-	rect.bottom = rect.bottom + 5;  
+	rect.top    = rect.top + 5;
+	rect.bottom = rect.bottom + 5;
 	rect.left   = rect.right + 5;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*1.5-25;
 	m_lblBlankPixels.Create("BS offset,0", WS_CHILD|!WS_VISIBLE, rect, this, ID_LBL_SAMPLE_BOTH);
@@ -986,7 +986,7 @@ void CML506View::CreateGrabberParams()
 	// frame counter option: by v-sync or by scanning line number
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblVstart.Create("Frame Counter By:", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_FRAME_COUNTER);
 	// add items for saving video
@@ -1000,10 +1000,10 @@ void CML506View::CreateGrabberParams()
 	m_radVsync.SetCheck(0);
 	m_radLines.EnableWindow(FALSE);
 	m_radVsync.EnableWindow(FALSE);
-	
+
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblPixelClock.Create("Pixels per line, 512-4095", WS_CHILD|!WS_VISIBLE, rect, this, ID_LBL_PCLOCK);
 	rect.left   = rect.right + 5;
@@ -1017,7 +1017,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	top         = rect.bottom;
 	m_lblHsyncI.Create("Hsync Input", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_HSYNCI);
@@ -1030,7 +1030,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = top + 5;  
+	rect.top    = top + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	top         = rect.bottom;
 	m_lblVsyncI.Create("Vsync Input", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_VSYNCI);
@@ -1043,7 +1043,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = top + 5;  
+	rect.top    = top + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	top         = rect.bottom;
 	m_lblHsyncO.Create("Hsync Output", WS_CHILD/*|WS_VISIBLE*/, rect, this, ID_LBL_HSYNCO);
@@ -1057,7 +1057,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = top + 10;  
+	rect.top    = top + 10;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	top         = rect.bottom;
 	m_lblVsyncO.Create("Vsync Output", WS_CHILD/*|WS_VISIBLE*/, rect, this, ID_LBL_VSYNCO);
@@ -1069,7 +1069,7 @@ void CML506View::CreateGrabberParams()
 	m_cboVsyncO.InsertString(1, "Active High");
 	m_cboVsyncO.EnableWindow(FALSE);
 /*
-	rect.top    = top + 10;  
+	rect.top    = top + 10;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_chkExternalClock.Create("External Pixel Clock", WS_CHILD|BS_CHECKBOX, rect, this, ID_CHECK_EXTCLOCK);
 	m_chkExternalClock.SetCheck(1);
@@ -1077,11 +1077,11 @@ void CML506View::CreateGrabberParams()
 */
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_btnLoadStimulus.Create("Load Stimulus", WS_CHILD|BS_DEFPUSHBUTTON|WS_TABSTOP|!WS_VISIBLE|WS_DISABLED, rect, this, ID_LOAD_STIMULUS);
 //	m_btnLoadStimulus.EnableWindow(FALSE);
-	
+
 //	m_btnDesinusoidCal.Create("Sinusoidal Calibration", WS_CHILD|BS_DEFPUSHBUTTON|WS_TABSTOP/*|WS_VISIBLE*/, rect, this, ID_DESINUSOID_CAL);
 
 
@@ -1202,11 +1202,11 @@ void CML506View::CreateGrabberParams()
 
 }
 
-int CML506View::OnCreate(LPCREATESTRUCT lpCreateStruct) 
+int CML506View::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CView::OnCreate(lpCreateStruct) == -1)
 		return -1;
-	
+
 	RECT  rect;
 
 	rect.left   = 0;
@@ -1294,17 +1294,17 @@ int CML506View::OnCreate(LPCREATESTRUCT lpCreateStruct)
         m_pDlgR->Create(IDD_DIALOG_CH1); // displays the dialog window
 		m_pDlgR->ShowWindow(SW_SHOW);
 	}
-	
+
     if (m_pDlgG->GetSafeHwnd() == 0) {
         m_pDlgG->Create(IDD_DIALOG_CH2); // displays the dialog window
 		//m_pDlgG->ShowWindow(SW_SHOW);
 	}
-	
+
     if (m_pDlgB->GetSafeHwnd() == 0) {
         m_pDlgB->Create(IDD_DIALOG_CH3); // displays the dialog window
 		//m_pDlgB->ShowWindow(SW_SHOW);
 	}
-*/	
+*/
 	return 0;
 }
 
@@ -1321,7 +1321,7 @@ void CML506View::CreateCfgSpace()
 	label = new char [256];
 	data  = new char [17];
 
-	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);  
+	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);
 	for (i = 0; i < VIRTEX5_CFG_REGS_NUM+2; i ++) {
 		// draw labels
 		rect.left   = 10;
@@ -1363,7 +1363,7 @@ void CML506View::CreateCfgSpace()
 	delete [] data;
 }
 
-void CML506View::CreateScannerParams() 
+void CML506View::CreateScannerParams()
 {
 	m_fovH         = g_VideoInfo.fovH;
 	m_fovV         = g_VideoInfo.fovV;
@@ -1391,7 +1391,7 @@ void CML506View::CreateScannerParams()
 	// galvo scanner FOV
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblGalvo.Create("Slow Scan FOV", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_GALVO);
 	rect.left   = rect.right + 5;
@@ -1404,7 +1404,7 @@ void CML506View::CreateScannerParams()
 	// # of lines in galvo forward scanning
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblGalvoForward.Create("Forward Lines", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_GALVOFORWARD);
 	rect.left   = rect.right + 5;
@@ -1417,7 +1417,7 @@ void CML506View::CreateScannerParams()
 	// # of lines in galvo backward scanning
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblGalvoBackward.Create("Backward Lines", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_GALVOBACKWARD);
 	rect.left   = rect.right + 5;
@@ -1430,7 +1430,7 @@ void CML506View::CreateScannerParams()
 	// ramp offset
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblRampOffset.Create("Ramp offset", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_RAMPOFFSET);
 	rect.left   = rect.right + 5;
@@ -1443,7 +1443,7 @@ void CML506View::CreateScannerParams()
 	// y-offset, for tracking
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblTrackY.Create("Tracking X: 0.000", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_YTRACK);
 	rect.left   = rect.right + 5;
@@ -1456,7 +1456,7 @@ void CML506View::CreateScannerParams()
 	// y-offset, for tracking
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblTrackY.Create("Tracking Y: 0.000", WS_CHILD|WS_VISIBLE, rect, this, ID_LBL_YTRACK);
 	rect.left   = rect.right + 5;
@@ -1470,7 +1470,7 @@ void CML506View::CreateScannerParams()
 	// steering
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblSteerY.Create("Steering: 0.00 deg", WS_CHILD|WS_VISIBLE, rect, this, ID_STEER_LABEL);
 	rect.left   = rect.right + 5;
@@ -1478,12 +1478,12 @@ void CML506View::CreateScannerParams()
 	m_scrSteerY.Create(WS_CHILD|SBS_HORZ|WS_VISIBLE|WS_TABSTOP, rect, this, ID_STEER_SCROLL);
 	m_scrSteerY.SetScrollRange(-255, 255, TRUE);
 	m_scrSteerY.SetScrollPos(m_iSteerY);
-*/	
+*/
 
 	// interleaving scanning lines
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_chkInterleave.Create("Interleave scanning lines", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_INTERLEAVE_LINE);
 	m_chkInterleave.EnableWindow(FALSE);
@@ -1501,7 +1501,7 @@ void CML506View::CreateScannerParams()
 	// 488 nm
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*1.5;
-	rect.top    = rect.bottom + 50;  
+	rect.top    = rect.bottom + 50;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_chkPower488.Create("Calibrate 488nm Laser", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_POWER488_CHK);
 	m_chkPower488.EnableWindow(FALSE);
@@ -1524,7 +1524,7 @@ void CML506View::CreateScannerParams()
 	// 488nm power adjustment
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblPower488.Create("488nm Laser voltage: 1.50 V", WS_CHILD|WS_VISIBLE, rect, this, ID_POWER488_LBL);
 	rect.left   = rect.right + 5;
@@ -1537,7 +1537,7 @@ void CML506View::CreateScannerParams()
 	// 568nm power adjustment
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblPower568.Create("568nm Laser voltage: 1.000 V", WS_CHILD|WS_VISIBLE, rect, this, ID_POWER568_LBL);
 	rect.left   = rect.right + 5;
@@ -1550,7 +1550,7 @@ void CML506View::CreateScannerParams()
 	// 796nm power adjustment
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_lblPower796.Create("796nm Laser voltage: 1.50 V", WS_CHILD|WS_VISIBLE, rect, this, ID_POWER796_LBL);
 	rect.left   = rect.right + 5;
@@ -1564,7 +1564,7 @@ void CML506View::CreateScannerParams()
 	// set symmetric ramp
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_chkSymmetricRamp.Create("Set Symmetric Ramp", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_SYMMETRIC_RAMP);
 	m_chkSymmetricRamp.EnableWindow(FALSE);
@@ -1576,10 +1576,10 @@ void CML506View::CreateScannerParams()
 	m_chkZeroInverse.Create("Disable slow scanning", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_ZERO_INVERSE);
 	m_chkZeroInverse.EnableWindow(FALSE);
 	m_chkZeroInverse.SetCheck(m_bZeroBackward);
-	
+
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*5+10;
-	rect.top    = rect.bottom + 5;  
+	rect.top    = rect.bottom + 5;
 	rect.bottom = rect.top + DLG_ITEM_HEIGHT;
 	m_btnCalibrateH.Create("Scale FOV of the fast scanner to FOV the slow scanner", WS_CHILD|BS_DEFPUSHBUTTON|WS_VISIBLE, rect, this, ID_CALIBRATE_RSFOV);
 	m_btnCalibrateH.EnableWindow(FALSE);
@@ -1622,7 +1622,7 @@ void CML506View::CreateScannerParams()
 void CML506View::OnSelchangeTabMain(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	int   idx = m_tabPCIe.GetCurSel();
-	
+
 	m_tabIndex = idx;
 
 	ShowTabItems(idx);
@@ -1961,7 +1961,7 @@ void CML506View::CreateRTregisters()
 	g_objVirtex5BMD.VIRTEX5_WriteReg32(g_hDevVirtex5, VIRTEX5_WDMATLPC_OFFSET, reg32);
 
 
-	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);  
+	rect.top  = 40 - (DLG_ITEM_HEIGHT + DLG_ITEM_MARGIN_Y);
 	for (i = 0; i < VIRTEX5_REGS_NUM; i ++) {
 		rect.left   = 10;
 		rect.right  = rect.left + DLG_ITEM_WIDTH;
@@ -2101,7 +2101,7 @@ void CML506View::ReadAllRegister()
 
 void CML506View::ReadPCIe()
 {
-	
+
 }
 
 
@@ -2122,7 +2122,7 @@ int CML506View::VerifyAddr(BOOL bWrite)
 	case 0x34:	val = 64;	break;			// digit 4;
 	case 0x35:	val = 80;	break;			// digit 5;
 	case 0x36:	val = 96;	break;			// digit 6;
-	case 0x37:	val = 112;	break;			// digit 7;	
+	case 0x37:	val = 112;	break;			// digit 7;
 	case 0x38:	val = 128;	break;
 	case 0x39:	val = 144;	break;
 	case 0x41:	val = 160;	break;
@@ -2166,7 +2166,7 @@ int CML506View::VerifyAddr(BOOL bWrite)
 		case 0x64:	val = val + 13;	break;
 		case 0x65:	val = val + 14;	break;
 		case 0x66:	val = val + 15;	break;
-		default:	
+		default:
 			m_EditCurrentRegAddr.SetBackgroundColor(FALSE, RGB(255, 0, 0));
 			MessageBox("Invalid Register Address", "Access Registers", MB_ICONWARNING);
 			return 11;
@@ -2390,7 +2390,7 @@ void CML506View::ReadI2CRegisters(BOOL bADC)
 			sRegHex.Format("0x%08X", regDataW);
 			ret = I2CController(regDataW, &reg_val, TRUE);
 			switch (ret) {
-			case 0: 
+			case 0:
 				sRegHex.Format("0x%02X (0x%02X)", i, reg_val);
 				sRegBin = Dec2Bin(reg_val);
 				break;
@@ -2431,7 +2431,7 @@ void CML506View::ReadI2CRegisters(BOOL bADC)
 			sRegHex.Format("0x%08X", regDataW);
 			ret = I2CController(regDataW, &reg_val, TRUE);
 			switch (ret) {
-			case 0: 
+			case 0:
 				sRegHex.Format("0x%02X (0x%02X)", i, reg_val);
 				sRegBin = Dec2Bin(reg_val);
 				break;
@@ -2659,7 +2659,7 @@ int CML506View::ReadWriteI2CRegister(BOOL bRead, UINT64 slave_addr)
 		ret = I2CController(regData, &reg_val, FALSE);
 
 	switch (ret) {
-	case 0: 
+	case 0:
 		sRegBin = Dec2Bin(reg_val);
 		rwFlag  = TRUE;
 		break;
@@ -2707,7 +2707,7 @@ int CML506View::ReadWriteI2CRegister(BOOL bRead, UINT64 slave_addr)
 	return ret;
 }
 
-void CML506View::OnNewDcf() 
+void CML506View::OnNewDcf()
 {
 	char titleName[120];
 	int  i;
@@ -2727,7 +2727,7 @@ void CML506View::OnNewDcf()
 	m_pDlgR = new CVideoChannelR(this);
 	if (m_pDlgR->GetSafeHwnd() == 0) {
         m_pDlgR->Create(IDD_DIALOG_CH1, GetDesktopWindow()); // displays the dialog window
-		m_pDlgR->ShowWindow(SW_SHOW);		
+		m_pDlgR->ShowWindow(SW_SHOW);
 	}
 /*
 	m_iShiftBS = m_iPLLclks - g_VideoInfo.img_width;
@@ -2739,7 +2739,7 @@ void CML506View::OnNewDcf()
 	UpdateVidSize(TRUE);
 }
 
-void CML506View::OnLoadDcf() 
+void CML506View::OnLoadDcf()
 {
 	char     BASED_CODE szFilter[] = "Image Grabber Configuration File(*.xgf)|*.xgf|";
 	char     xgfFileName[120], titleName[240];
@@ -2772,103 +2772,103 @@ void CML506View::OnLoadDcf()
 		msg.Format(_T("Unreasonable image width: %d pixels"), g_VideoInfo.img_width);
 		MessageBox(msg, "Read Image Width", MB_ICONWARNING);
 	}
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);  
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.img_height = tmpA;
 	if (g_VideoInfo.img_height<1 || g_VideoInfo.img_height>1000) {
 		msg.Format(_T("Unreasonable image height: %d lines"), g_VideoInfo.img_height);
 		MessageBox(msg, "Read Image Height", MB_ICONWARNING);
 	}
-	ret = fread(&tmpC, sizeof(unsigned char), 1, fp);  
+	ret = fread(&tmpC, sizeof(unsigned char), 1, fp);
 	g_VideoInfo.line_spacing = tmpC;
 	if (g_VideoInfo.line_spacing<1 || g_VideoInfo.line_spacing>32) {
 		msg.Format(_T("Unreasonable strip height: %d lines"), g_VideoInfo.line_spacing);
 		MessageBox(msg, "Read strip height", MB_ICONWARNING);
 	}
-	ret = fread(&tmpB, sizeof(UINT32), 1, fp);  
+	ret = fread(&tmpB, sizeof(UINT32), 1, fp);
 	g_VideoInfo.addr_interval = tmpB;
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);  
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.offset_line = tmpA;
 	if (g_VideoInfo.offset_line<0 || g_VideoInfo.offset_line>g_VideoInfo.img_height) {
 		msg.Format(_T("Unreasonable line offset: %d lines"), g_VideoInfo.offset_line);
 		MessageBox(msg, "Read line offset", MB_ICONWARNING);
 	}
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp); 
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.offset_pixel = tmpA;
 	if (g_VideoInfo.offset_pixel<0 || g_VideoInfo.offset_pixel>m_iPLLclks-g_VideoInfo.img_width) {
 		msg.Format(_T("Unreasonable pixel offset: %d pixels"), g_VideoInfo.offset_pixel);
 		MessageBox(msg, "Read pixel offset", MB_ICONWARNING);
 	}
 
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	m_bDualChannel = tmpBool;
 	g_VideoInfo.bDualChannel = m_bDualChannel;
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	m_bSampleG = tmpBool;
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	m_bSampleB = tmpBool;
-	ret = fread(&tmpInt, sizeof(int), 1, fp); 
+	ret = fread(&tmpInt, sizeof(int), 1, fp);
 	m_iVideoNum = tmpInt;
 	if (m_iVideoNum<1 || m_iVideoNum>3) {
 		msg.Format(_T("Unreasonable sampling channel numbers: %d"), m_iVideoNum);
 		MessageBox(msg, "ADC sampling channels", MB_ICONWARNING);
 	}
-	ret = fread(&tmpInt, sizeof(int), 1, fp); 
+	ret = fread(&tmpInt, sizeof(int), 1, fp);
 	m_iChannelNum = tmpInt;
 	if (m_iChannelNum<1 || m_iChannelNum>2) {
 		msg.Format(_T("Unreasonable sampling edges: %d"), m_iChannelNum);
 		MessageBox(msg, "ADC sampling edges", MB_ICONWARNING);
 	}
-	ret = fread(&tmpInt, sizeof(int), 1, fp); 
+	ret = fread(&tmpInt, sizeof(int), 1, fp);
 	m_iShiftBS = tmpInt;
 	if (m_iShiftBS<0 || m_iShiftBS>m_iPLLclks/2) {
 		msg.Format(_T("Unreasonable spacing between forward scanning and backward scanning: %d"), m_iShiftBS);
 		MessageBox(msg, "Slow scanning zone", MB_ICONWARNING);
 	}
 
-	ret = fread(&tmpInt, sizeof(int), 1, fp); 
+	ret = fread(&tmpInt, sizeof(int), 1, fp);
 	g_VideoInfo.nVideoTabs = tmpInt;
 	if (g_VideoInfo.nVideoTabs<1 || g_VideoInfo.nVideoTabs>3) {
 		msg.Format(_T("Unreasonable sampling channel numbers: %d"), g_VideoInfo.nVideoTabs);
 		MessageBox(msg, "ADC sampling channels", MB_ICONWARNING);
 	}
-	ret = fread(&tmpInt, sizeof(int), 1, fp); 
+	ret = fread(&tmpInt, sizeof(int), 1, fp);
 	g_VideoInfo.nVideoChannels = tmpInt;
 	if (g_VideoInfo.nVideoChannels<1 || g_VideoInfo.nVideoChannels>2) {
 		msg.Format(_T("Unreasonable sampling edges: %d"), g_VideoInfo.nVideoChannels);
 		MessageBox(msg, "ADC sampling edges", MB_ICONWARNING);
 	}
 
-	// resonant FOV 
-	ret = fread(&tmpC, sizeof(BYTE), 1, fp); 
+	// resonant FOV
+	ret = fread(&tmpC, sizeof(BYTE), 1, fp);
 	g_VideoInfo.fovH = tmpC;
-	// galvo scanner FOV 
-	ret = fread(&tmpC, sizeof(BYTE), 1, fp); 
+	// galvo scanner FOV
+	ret = fread(&tmpC, sizeof(BYTE), 1, fp);
 	g_VideoInfo.fovV = tmpC;
 	// forward scanning lines
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp); 
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.fLines = tmpA;
 	if (g_VideoInfo.fLines<1 || g_VideoInfo.fLines>1000) {
 		msg.Format(_T("Unreasonable scanning lines per frame: %d"), g_VideoInfo.fLines);
 		MessageBox(msg, "Forward scanning lines", MB_ICONWARNING);
 	}
 	// backward scanning steps
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp); 
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.bStepSize = tmpA;
 	if (g_VideoInfo.bStepSize<2 || g_VideoInfo.bStepSize>g_VideoInfo.fLines) {
 		msg.Format(_T("Unreasonable reverse scanning step: %d"), g_VideoInfo.bStepSize);
 		MessageBox(msg, "Reverse scanning step size", MB_ICONWARNING);
 	}
 	// ramp offset
-	ret = fread(&tmpA, sizeof(unsigned short), 1, fp); 
+	ret = fread(&tmpA, sizeof(unsigned short), 1, fp);
 	g_VideoInfo.vOffset = tmpA;
 	// flag of interlacing line
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	g_VideoInfo.bDoubleLine = tmpBool;
 	// flag of setting backward slow scanning to zero
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	g_VideoInfo.bZeroBackward = tmpBool;
 	// flag of symmetric ramp
-	ret = fread(&tmpBool, sizeof(BOOL), 1, fp); 
+	ret = fread(&tmpBool, sizeof(BOOL), 1, fp);
 	g_VideoInfo.bSymmetricRamp = tmpBool;
 
 	m_fovH         = g_VideoInfo.fovH;
@@ -2941,7 +2941,7 @@ void CML506View::OnLoadDcf()
 
 
 
-	//g_VideoInfo.tlp_counts  = g_VideoInfo.img_width/8+3;		// this one has to be updated 
+	//g_VideoInfo.tlp_counts  = g_VideoInfo.img_width/8+3;		// this one has to be updated
 	g_VideoInfo.tlp_counts = (g_VideoInfo.img_width*m_iVideoNum*m_iChannelNum+8)/8+3;
 
 
@@ -2951,12 +2951,12 @@ void CML506View::OnLoadDcf()
 
 	// update active window on GUI
 //	pDoc->UpdateAllViews(this, USER_MESSAGE_IMGWIDTH, NULL);
-	
+
 	g_bDCFloaded = TRUE;
 	UpdateRuntimeRegisters();
 	UpdateGuiControls();
 	EnableGuiControls(TRUE);
-	
+
 	// setup title name
 	m_strFileName = xgfFileName;
 	m_strTitleName = m_strAppName + m_strFileName;
@@ -3008,7 +3008,7 @@ void CML506View::OnLoadDcf()
 
 }
 
-void CML506View::OnSaveDcf() 
+void CML506View::OnSaveDcf()
 {
 	char     BASED_CODE szFilter[] = "Image Grabber Configuration File(*.xgf)|*.xgf|";
 	char     pname[120]="", fname[40] = "", txtname[120]="";
@@ -3017,7 +3017,7 @@ void CML506View::OnSaveDcf()
 	FILE    *fp;
 /*
 	if (VerifyI2CVals() == FALSE) {
-		MessageBox("Register values of ADC are incomplete. Load/update all register values before saving the image grabber configuration file", 
+		MessageBox("Register values of ADC are incomplete. Load/update all register values before saving the image grabber configuration file",
 					"Save Image Grabber File", MB_ICONWARNING);
 		return;
 	}
@@ -3044,10 +3044,10 @@ void CML506View::OnSaveDcf()
 	}
 
 	m_strFileName = pname;
-	for (i = 0; i < m_strFileName.GetLength()-3; i ++) 
+	for (i = 0; i < m_strFileName.GetLength()-3; i ++)
 		txtname[i] = m_strFileName.GetAt(i);
 	strcat(txtname, "txt");
-	
+
 
 	fp = fopen(pname, "wb");
 	if (fp == NULL) {
@@ -3056,50 +3056,50 @@ void CML506View::OnSaveDcf()
 		return;
 	}
 	// write image width
-	ret = fwrite(&g_VideoInfo.img_width, sizeof(unsigned short), 1, fp);  
+	ret = fwrite(&g_VideoInfo.img_width, sizeof(unsigned short), 1, fp);
 	// write image height
-	ret = fwrite(&g_VideoInfo.img_height, sizeof(unsigned short), 1, fp);  
+	ret = fwrite(&g_VideoInfo.img_height, sizeof(unsigned short), 1, fp);
 	// write line spacing
-	ret = fwrite(&g_VideoInfo.line_spacing, sizeof(unsigned char), 1, fp);  
+	ret = fwrite(&g_VideoInfo.line_spacing, sizeof(unsigned char), 1, fp);
 	// write address interval
-	ret = fwrite(&g_VideoInfo.addr_interval, sizeof(UINT32), 1, fp);  
+	ret = fwrite(&g_VideoInfo.addr_interval, sizeof(UINT32), 1, fp);
 	// line offset
-	ret = fwrite(&g_VideoInfo.offset_line, sizeof(unsigned short), 1, fp);  
+	ret = fwrite(&g_VideoInfo.offset_line, sizeof(unsigned short), 1, fp);
 	// pixel offset
-	ret = fwrite(&g_VideoInfo.offset_pixel, sizeof(unsigned short), 1, fp); 
+	ret = fwrite(&g_VideoInfo.offset_pixel, sizeof(unsigned short), 1, fp);
 	// flag of forward&backward scanning
-	ret = fwrite(&m_bDualChannel, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&m_bDualChannel, sizeof(BOOL), 1, fp);
 	// flag of sampling channel green
-	ret = fwrite(&m_bSampleG, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&m_bSampleG, sizeof(BOOL), 1, fp);
 	// flag of sampling channel blue
-	ret = fwrite(&m_bSampleB, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&m_bSampleB, sizeof(BOOL), 1, fp);
 	// number of ADC channels used
-	ret = fwrite(&m_iVideoNum, sizeof(int), 1, fp); 
+	ret = fwrite(&m_iVideoNum, sizeof(int), 1, fp);
 	// forward and/or backward scanning
-	ret = fwrite(&m_iChannelNum, sizeof(int), 1, fp); 
+	ret = fwrite(&m_iChannelNum, sizeof(int), 1, fp);
 	// black area between forward scanning and backward scanning
-	ret = fwrite(&m_iShiftBS, sizeof(int), 1, fp); 
+	ret = fwrite(&m_iShiftBS, sizeof(int), 1, fp);
 	// number of ADC channels used
-	ret = fwrite(&g_VideoInfo.nVideoTabs, sizeof(int), 1, fp); 
+	ret = fwrite(&g_VideoInfo.nVideoTabs, sizeof(int), 1, fp);
 	// forward and/or backward scanning
-	ret = fwrite(&g_VideoInfo.nVideoChannels, sizeof(int), 1, fp); 
-	
+	ret = fwrite(&g_VideoInfo.nVideoChannels, sizeof(int), 1, fp);
+
 	// resonant FOV
-	ret = fwrite(&g_VideoInfo.fovH, sizeof(BYTE), 1, fp); 
+	ret = fwrite(&g_VideoInfo.fovH, sizeof(BYTE), 1, fp);
 	// galvo FOV
-	ret = fwrite(&g_VideoInfo.fovV, sizeof(BYTE), 1, fp); 
+	ret = fwrite(&g_VideoInfo.fovV, sizeof(BYTE), 1, fp);
 	// forward scanning lines
-	ret = fwrite(&g_VideoInfo.fLines, sizeof(unsigned short), 1, fp); 
+	ret = fwrite(&g_VideoInfo.fLines, sizeof(unsigned short), 1, fp);
 	// backward scanning step size
-	ret = fwrite(&g_VideoInfo.bStepSize, sizeof(unsigned short), 1, fp); 
+	ret = fwrite(&g_VideoInfo.bStepSize, sizeof(unsigned short), 1, fp);
 	// ramp offset
-	ret = fwrite(&g_VideoInfo.vOffset, sizeof(unsigned short), 1, fp); 
+	ret = fwrite(&g_VideoInfo.vOffset, sizeof(unsigned short), 1, fp);
 	// flag of interlacing lines
-	ret = fwrite(&g_VideoInfo.bDoubleLine, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&g_VideoInfo.bDoubleLine, sizeof(BOOL), 1, fp);
 	// flag of setting backward slow scanning to zero
-	ret = fwrite(&g_VideoInfo.bZeroBackward, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&g_VideoInfo.bZeroBackward, sizeof(BOOL), 1, fp);
 	// flag of setting symmetric ramp signal
-	ret = fwrite(&g_VideoInfo.bSymmetricRamp, sizeof(BOOL), 1, fp); 
+	ret = fwrite(&g_VideoInfo.bSymmetricRamp, sizeof(BOOL), 1, fp);
 
 	ret = fwrite(m_adcVals, sizeof(BYTE), 47, fp);
 
@@ -3146,9 +3146,9 @@ void CML506View::OnSaveDcf()
 	// forward and/or backward scanning
 	fprintf(fp, "fast scanning:\t\t%s\n", m_iChannelNum==2?"FS/BS":"FS");
 	// black area between forward scanning and backward scanning
-	fprintf(fp, "Back scan shift:\t%d\n", m_iShiftBS); 
+	fprintf(fp, "Back scan shift:\t%d\n", m_iShiftBS);
 	// resonant FOV
-	fprintf(fp, "Resonant scanner FOV:\t%d (uint)\n", g_VideoInfo.fovH); 
+	fprintf(fp, "Resonant scanner FOV:\t%d (uint)\n", g_VideoInfo.fovH);
 	// galvo FOV
 	fprintf(fp, "Slow scanner FOV:\t%d (uint)\n", g_VideoInfo.fovV); */
 
@@ -3175,7 +3175,7 @@ BOOL CML506View::VerifyI2CVals()
 	return TRUE;
 }
 
-void CML506View::OnSize(UINT nType, int cx, int cy) 
+void CML506View::OnSize(UINT nType, int cx, int cy)
 {
 	if (m_bClientCreated == TRUE) {
 		m_tabPCIe.SetWindowPos(&wndBottom, 0, 0, cx, cy, SWP_SHOWWINDOW);
@@ -3184,7 +3184,7 @@ void CML506View::OnSize(UINT nType, int cx, int cy)
 	CView::OnSize(nType, cx, cy);
 }
 
-void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
+void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	CML506Doc* pDoc = GetDocument();
 	CString msg;
@@ -3244,7 +3244,7 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
         pScrollBar->SetScrollPos(nPos);
 		nTemp1 = nPos;
 		break;
-    } 
+    }
 
 
 	switch (pScrollBar->GetDlgCtrlID()) {
@@ -3253,7 +3253,7 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		nTemp1 = (nTemp1/8)*8;
 		msg.Format("Image Width, \t%d pixels", nTemp1);
 		m_lblImgSizeX.SetWindowText(msg);
-		
+
 		g_VideoInfo.img_width       = nTemp1+8;
 
 		// setup image width on FPGA registers
@@ -3275,7 +3275,7 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		// write TLP counts to PCIe register
 		regData  = g_VideoInfo.tlp_counts/2;
 		g_objVirtex5BMD.VIRTEX5_WriteReg32(g_hDevVirtex5, VIRTEX5_WDMATLPC_OFFSET, regData);
-		
+
 		// update active window on GUI
 		UpdateVidSize(FALSE);
 
@@ -3294,7 +3294,7 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 
 		msg.Format("Image Height, \t%d lines", nTemp1);
 		m_lblImgSizeY.SetWindowText(msg);
-		
+
 		g_VideoInfo.img_height       = nTemp1;
 
 		// setup image width on FPGA registers
@@ -3500,7 +3500,7 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	default:
 		return;
 	}
-	
+
 	g_bDCFsaved = FALSE;			// run-time registers have been updated
 	m_strTitleName = m_strAppName + m_strFileName + " *";
 	GetParentOwner()->SetWindowText(m_strTitleName);
@@ -3509,14 +3509,14 @@ void CML506View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 }
 
 
-void CML506View::UpdateGuiControls() 
+void CML506View::UpdateGuiControls()
 {
 	int     tmp;
 	UINT32  imgoffset, imgSize, width, height, reg32, regData, regData1, regData2;;
 	CString msg;
 
 	// read single registers from ADC
-	
+
 	imgSize = g_objVirtex5BMD.VIRTEX5_ReadReg32(g_hDevVirtex5, VIRTEX5_IMAGESIZE_OFFSET);
 	// 1. image width
 	width = imgSize >> 12;
@@ -3553,7 +3553,7 @@ void CML506View::UpdateGuiControls()
 	// 4r. Constrast R (0x05, 0x06)
 	msg.Format("%d", m_adcVals[0x05]);
 	m_edtContrastR.SetWindowText(msg);
-	
+
 	// 3g. Brightness G (0x0D, 0x0E)
 	tmp = m_adcVals[0x0D];
 	tmp = tmp << 8;
@@ -3567,7 +3567,7 @@ void CML506View::UpdateGuiControls()
 	// 4g. Constrast G (0x07, 0x08)
 	msg.Format("%d", m_adcVals[0x07]);
 	m_edtContrastG.SetWindowText(msg);
-	
+
 	// 3b. Brightness B (0x0F, 0x10)
 	tmp = m_adcVals[0x0F];
 	tmp = tmp << 8;
@@ -3595,7 +3595,7 @@ void CML506View::UpdateGuiControls()
 	regData2 = regData2 << 24;
 	regData  = regData + regData1 + regData2;
 	g_objVirtex5BMD.VIRTEX5_WriteReg32(g_hDevVirtex5, VIRTEX5_IMAGEOS_OFFSET, regData);
-	
+
 	imgoffset = g_objVirtex5BMD.VIRTEX5_ReadReg32(g_hDevVirtex5, VIRTEX5_IMAGEOS_OFFSET);
 
 	// 5. Image OffsetX
@@ -3852,7 +3852,7 @@ void CML506View::HsyncInChange()
 	if ((index==1 && m_bHsyncI==FALSE) || (index==0 && m_bHsyncI==TRUE)) {
 		m_bHsyncI = !m_bHsyncI;
 		// update ADC register
-		m_regAddr = 0x12; 
+		m_regAddr = 0x12;
 		if (m_bHsyncI == TRUE) {
 			m_regVal = m_adcVals[0x12] | BIT4;
 		} else {
@@ -3890,7 +3890,7 @@ void CML506View::HsyncOutChange()
 	if ((index==1 && m_bHsyncO==FALSE) || (index==0 && m_bHsyncO==TRUE)) {
 		m_bHsyncO = !m_bHsyncO;
 		// update ADC register
-		m_regAddr = 0x12; 
+		m_regAddr = 0x12;
 		if (m_bHsyncO == TRUE) {
 			m_regVal = m_adcVals[0x12] | BIT3;
 		} else {
@@ -3936,7 +3936,7 @@ void CML506View::VsyncInChange()
 	if ((index==1 && m_bVsyncI==FALSE) || (index==0 && m_bVsyncI==TRUE)) {
 		m_bVsyncI = !m_bVsyncI;
 		// update ADC register
-		m_regAddr = 0x14; 
+		m_regAddr = 0x14;
 		if (m_bVsyncI == TRUE) {
 			m_regVal = m_adcVals[0x14] | BIT4;
 		} else {
@@ -3974,7 +3974,7 @@ void CML506View::VsyncOutChange()
 	if ((index==1 && m_bVsyncO==FALSE) || (index==0 && m_bVsyncO==TRUE)) {
 		m_bVsyncO = !m_bVsyncO;
 		// update ADC register
-		m_regAddr = 0x14; 
+		m_regAddr = 0x14;
 		if (m_bVsyncO == TRUE) {
 			m_regVal = m_adcVals[0x14] | BIT3;
 		} else {
@@ -4061,7 +4061,7 @@ void CML506View::EnableGuiControls(BOOL xfgLoaded)
 			m_edtBrightnessB.EnableWindow(TRUE);
 			m_edtContrastB.EnableWindow(TRUE);
 		}
-//		if (m_bDualChannel) 
+//		if (m_bDualChannel)
 //			m_scrBlankPixels.EnableWindow(TRUE);
 
 	} else {
@@ -4130,7 +4130,7 @@ void CML506View::LoadStimulus()
 	} else {
 		pDoc->m_bSymbol = TRUE;
 		// get the path and file name of this stimulus file
-		filename = fd.GetPathName();		
+		filename = fd.GetPathName();
 		filename.TrimLeft();
 		filename.TrimRight();
 		pDoc->LoadSymbol(filename);
@@ -4167,14 +4167,14 @@ void CML506View::CalibrateSinu() {
 	m_pDlgSinu->UpdateImageInfo(g_VideoInfo.img_width, g_VideoInfo.img_height);
 }
 
-void CML506View::OnInitialUpdate() 
+void CML506View::OnInitialUpdate()
 {
 	CView::OnInitialUpdate();
-	
+
 	m_bClientCreated = TRUE;
 }
 
-void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint) 
+void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 {
 	switch (lHint) {
 	case USER_MESSAGE_CONNECT:
@@ -4202,7 +4202,7 @@ void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		break;
 	default:
 		break;
-	}	
+	}
 }
 
 
@@ -4268,7 +4268,7 @@ void CML506View::SaveLiveVideo()
 	SYSTEMTIME  tt;
 	int         i, nLen, fps, fidR, fidG, fidB;
 	CML506Doc*  pDoc = GetDocument();
-	
+
 	fps = (int)(1.0/g_VideoInfo.fFrameInterval+0.5);
 
 	GetDlgItemText(ID_VIDEO_SAVE, text);
@@ -4298,7 +4298,7 @@ void CML506View::SaveLiveVideo()
 
 		m_edtVideoPrefixR.GetWindowText(text);
 		text.Trim();
-		if (text.GetLength() == 0) 
+		if (text.GetLength() == 0)
 			text = _T("vid");
 
 		vids = m_aviFolderNameR + "\\" + text + "_";
@@ -4309,14 +4309,14 @@ void CML506View::SaveLiveVideo()
 
 		m_edtVideoPrefixG.GetWindowText(text);
 		text.Trim();
-		if (text.GetLength() == 0) 
+		if (text.GetLength() == 0)
 			text = _T("vid");
 	//	m_aviFileNameG = m_aviFolderNameG + "\\" + text + "_" + vids + ".avi";
 		m_aviFileNameG = m_aviFolderNameR + "\\" + text + "_" + vids + ".avi";
 
 		m_edtVideoPrefixB.GetWindowText(text);
 		text.Trim();
-		if (text.GetLength() == 0) 
+		if (text.GetLength() == 0)
 			text = _T("vid");
 	//	m_aviFileNameB = m_aviFolderNameB + "\\" + text + "_" + vids + ".avi";
 		m_aviFileNameB = m_aviFolderNameR + "\\" + text + "_" + vids + ".avi";
@@ -4337,7 +4337,7 @@ void CML506View::SaveLiveVideo()
 		} else {
 			nLen = g_VideoInfo.img_width;
 		}
-	
+
 		CT2CA szaviFileR(_T(m_aviFileNameR));
 		std::string straviFileR(szaviFileR);
 		m_aviHandlerR.open(straviFileR, 0, fps, m_frameSize, false);
@@ -4419,7 +4419,7 @@ void CML506View::SaveLiveVideo()
 
 
 
-LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam) 
+LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 {
 	int   nMsgID = lParam;
 	int   nMsgType = wParam;
@@ -4461,7 +4461,7 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 			SetDlgItemText(ID_VIDEO_SAVE, "Save Video");
 		} else {
 			m_aviHandlerR.write(frameR);
-			
+
 			if (m_bSampleG)
 					m_aviHandlerG.write(frameG);
 
@@ -4471,7 +4471,7 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 			msg.Format(_T("Stop %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
 			SetDlgItemText(ID_VIDEO_SAVE, msg);
 		}
-	
+
 		break;
 
 	case USER_MESSAGE_NEWFRAME:
@@ -4497,6 +4497,10 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 	case USER_MESSAGE_FOV_CALIBRATION:
 		break;
 
+  case IGUIDE_MESSAGE_SAVE:
+      SaveLiveVideo();
+    break;
+
 	default:
 		break;
 	}
@@ -4510,12 +4514,12 @@ void CML506View::UpdateBrightnessR(NMHDR* wParam, LRESULT *plr) {
 	int     brightness;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
 
-	switch (lpMsgFilter->msg) { 
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4551,12 +4555,12 @@ void CML506View::UpdateContrastR(NMHDR* wParam, LRESULT *plr) {
 	int     contrast;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
-	
-	switch (lpMsgFilter->msg) { 
+
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4565,7 +4569,7 @@ void CML506View::UpdateContrastR(NMHDR* wParam, LRESULT *plr) {
 				if (contrast<0 || contrast > 127) {
 					MessageBox("Enter a value between 0 and 127", "Invalid data", MB_ICONWARNING);
 					return;
-				} 
+				}
 				m_regAddr = 0x05; m_regVal = contrast;
 				ReadWriteI2CRegister(FALSE, 0x4c000000);
 //				Sleep(1);
@@ -4583,12 +4587,12 @@ void CML506View::UpdateBrightnessG(NMHDR* wParam, LRESULT *plr) {
 	int     brightness;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
 
-	switch (lpMsgFilter->msg) { 
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4624,12 +4628,12 @@ void CML506View::UpdateContrastG(NMHDR* wParam, LRESULT *plr) {
 	int     contrast;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
-	
-	switch (lpMsgFilter->msg) { 
+
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4638,7 +4642,7 @@ void CML506View::UpdateContrastG(NMHDR* wParam, LRESULT *plr) {
 				if (contrast<0 || contrast > 127) {
 					MessageBox("Enter a value between 0 and 127", "Invalid data", MB_ICONWARNING);
 					return;
-				} 
+				}
 				m_regAddr = 0x07; m_regVal = contrast;
 				ReadWriteI2CRegister(FALSE, 0x4c000000);
 //				Sleep(1);
@@ -4654,12 +4658,12 @@ void CML506View::UpdateBrightnessB(NMHDR* wParam, LRESULT *plr) {
 	int     brightness;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
 
-	switch (lpMsgFilter->msg) { 
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4695,12 +4699,12 @@ void CML506View::UpdateContrastB(NMHDR* wParam, LRESULT *plr) {
 	int     contrast;
 	UINT32  regData;
 	BYTE    hiByte, loByte;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
-	
-	switch (lpMsgFilter->msg) { 
+
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4709,7 +4713,7 @@ void CML506View::UpdateContrastB(NMHDR* wParam, LRESULT *plr) {
 				if (contrast<0 || contrast > 127) {
 					MessageBox("Enter a value between 0 and 127", "Invalid data", MB_ICONWARNING);
 					return;
-				} 
+				}
 				m_regAddr = 0x09; m_regVal = contrast;
 				ReadWriteI2CRegister(FALSE, 0x4c000000);
 //				Sleep(1);
@@ -4724,12 +4728,12 @@ void CML506View::UpdatePixelClock(NMHDR* wParam, LRESULT *plr) {
 	CString text;
 	UINT32  pixels;
 	int     val, ret;
-	
+
 	CML506Doc* pDoc = GetDocument();
 
 	MSGFILTER * lpMsgFilter = (MSGFILTER *)wParam;
-	
-	switch (lpMsgFilter->msg) { 
+
+	switch (lpMsgFilter->msg) {
 	case WM_KEYDOWN:{
 			int data=lpMsgFilter->wParam;
 			if (data == 13){
@@ -4738,7 +4742,7 @@ void CML506View::UpdatePixelClock(NMHDR* wParam, LRESULT *plr) {
 				if (val<512 || val>4095) {
 					MessageBox("Enter a value between 512 and 4095", "Invalid data", MB_ICONWARNING);
 					return;
-				} 
+				}
 				pixels = val;
 				m_iPLLclks = pixels/2;
 
@@ -4758,7 +4762,7 @@ void CML506View::UpdatePixelClock(NMHDR* wParam, LRESULT *plr) {
 void CML506View::SampleDualChannel()
 {
 	if (m_chkBidirection.GetCheck() == 1) {
-		g_bDesinusoid = FALSE;		
+		g_bDesinusoid = FALSE;
 		m_chkBidirection.SetCheck(0);
 	} else {
 		// Get a LUT file from the disk
@@ -4773,7 +4777,7 @@ void CML506View::SampleDualChannel()
 			m_chkBidirection.SetCheck(0);
 			return;
 		} else {
-			lutFileName = fd.GetPathName();	
+			lutFileName = fd.GetPathName();
 			int        *UnMatrixIdx;
 			float      *UnMatrixVal;
 			UnMatrixIdx = new int [((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2];
@@ -4782,11 +4786,11 @@ void CML506View::SampleDualChannel()
 			if (ReadLUT(lutFileName, g_VideoInfo.img_width-8, g_VideoInfo.img_height, UnMatrixIdx, UnMatrixVal) == FALSE) {
 				g_bDesinusoid = FALSE;
 				m_chkBidirection.SetCheck(0);
-			} else {			
+			} else {
 				g_bDesinusoid = FALSE;
-				if (g_desinusoidParams.UnMatrixIdx == NULL && g_desinusoidParams.UnMatrixVal == NULL) { 
+				if (g_desinusoidParams.UnMatrixIdx == NULL && g_desinusoidParams.UnMatrixVal == NULL) {
 					g_desinusoidParams.UnMatrixIdx = new int [((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2];
-					g_desinusoidParams.UnMatrixVal = new float [((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2];			
+					g_desinusoidParams.UnMatrixVal = new float [((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2];
 				}
 				memcpy(g_desinusoidParams.UnMatrixIdx, UnMatrixIdx, (((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2)*sizeof(int));
 				memcpy(g_desinusoidParams.UnMatrixVal, UnMatrixVal, (((g_VideoInfo.img_width-8)+g_VideoInfo.img_height)*2)*sizeof(float));
@@ -4797,7 +4801,7 @@ void CML506View::SampleDualChannel()
 
 			delete [] UnMatrixIdx;
 			delete [] UnMatrixVal;
-		}	
+		}
 	}
 /*	m_bDualChannel = !m_bDualChannel;
 
@@ -4833,7 +4837,7 @@ void CML506View::SampleDualChannel()
 
 
 void CML506View::CheckDualChannel(BOOL bDual) { // Load desinusoid LUT file
-	
+
 	UINT32 regData, regData1, regData2;
 
 	m_chkBidirection.SetCheck(bDual);
@@ -4925,7 +4929,7 @@ void CML506View::CheckChannelG(BOOL flagG, BOOL bFromGUI) {
 			m_pDlgG->ShowWindow(SW_SHOW);
 		}
 		UpdateVidSize(TRUE);
-		
+
 		if (m_iVideoNum==3) {
 			m_chkChannelSW.ShowWindow(SW_SHOW);
 			m_chkChannelSW.EnableWindow(TRUE);
@@ -4948,7 +4952,7 @@ void CML506View::CheckChannelG(BOOL flagG, BOOL bFromGUI) {
 
 		regData = (regData|BIT12) - BIT12;
 
-		// hide switch checkbox		
+		// hide switch checkbox
 		m_chkChannelSW.ShowWindow(SW_HIDE);
 		m_chkChannelSW.EnableWindow(FALSE);
 		g_bSampleSW = m_bSampleSW = FALSE;
@@ -4977,7 +4981,7 @@ void CML506View::SampleChannelSW()
 			g_imgBuffSD = new BYTE [g_VideoInfo.img_width*g_VideoInfo.img_height];
 		}
 	}
-	
+
 	g_bSampleSW = m_bSampleSW = !m_bSampleSW;
 	m_chkChannelSW.SetCheck(m_bSampleSW);
 }
@@ -5009,7 +5013,7 @@ void CML506View::CheckChannelB(BOOL flagB, BOOL bFromGUI) {
 			m_pDlgB = new CVideoChannelB(this);
 			if (m_pDlgB->GetSafeHwnd() == 0) {
 				m_pDlgB->Create(IDD_DIALOG_CH3, GetDesktopWindow()); // displays the dialog window
-				m_pDlgB->ShowWindow(SW_SHOW);				
+				m_pDlgB->ShowWindow(SW_SHOW);
 			}
 		} else {
 			m_pDlgB->ShowWindow(SW_SHOW);
@@ -5062,7 +5066,7 @@ void CML506View::UpdateVidSize(BOOL bNewDialog) {
 		osY = -9000;
 	}
 
-	m_pDlgR->UpdateImageInfo(g_VideoInfo.img_width*g_VideoInfo.nVideoChannels-8, g_VideoInfo.img_height, osX, osY, m_bDualChannel);	
+	m_pDlgR->UpdateImageInfo(g_VideoInfo.img_width*g_VideoInfo.nVideoChannels-8, g_VideoInfo.img_height, osX, osY, m_bDualChannel);
 	m_frameSize = cv::Size(static_cast<int>(g_VideoInfo.img_width-8), static_cast<int>(g_VideoInfo.img_height));
 	frameR = cv::Mat(g_VideoInfo.img_height, g_VideoInfo.img_width-8, CV_8UC1, m_pDlgR->m_desBuffer, 0);
 
@@ -5105,7 +5109,7 @@ void CML506View::ParseVideo()
 			memcpy(m_pDlgR->m_imgBuffer, g_VideoInfo.video_out, g_VideoInfo.img_width*g_VideoInfo.img_height*2);
 		} else {
 		//	memcpy(m_pDlgR->m_imgBuffer, g_VideoInfo.video_out, g_VideoInfo.img_width*g_VideoInfo.img_height);
-			MUB_submatrix( &m_pDlgR->m_imgBuffer, g_VideoInfo.img_height, g_VideoInfo.img_width-8, &g_VideoInfo.video_out, g_VideoInfo.img_height, g_VideoInfo.img_width, 0, 1, 0, 1 );			
+			MUB_submatrix( &m_pDlgR->m_imgBuffer, g_VideoInfo.img_height, g_VideoInfo.img_width-8, &g_VideoInfo.video_out, g_VideoInfo.img_height, g_VideoInfo.img_width, 0, 1, 0, 1 );
 		}
 	} else if (m_iVideoNum == 2) {
 		// red and green channel
@@ -5117,7 +5121,7 @@ void CML506View::ParseVideo()
 					memcpy(m_pDlgG->m_imgBuffer+idx2+i*8, g_VideoInfo.video_out+(idx1+(8*(i+1)))*2+4,  8);
 					memcpy(m_pDlgR->m_imgBuffer+idx2+i*8, g_VideoInfo.video_out+(idx1+8*i)*2+12, 8);
 				}
-			}						
+			}
 			m_pDlgG->m_fFrameInterval = g_VideoInfo.fFrameInterval;
 			m_pDlgG->RefreshVideo();
 		// red and blue channel
@@ -5155,7 +5159,7 @@ void CML506View::ParseVideo()
 					g_imgBuffDF[i] = (m_pDlgG->m_imgBuffer[i] + m_pDlgB->m_imgBuffer[i])>>1;
 					g_imgBuffSD[i] = floor( ((((m_pDlgG->m_imgBuffer[i] - m_pDlgB->m_imgBuffer[i])*1.) / (((m_pDlgG->m_imgBuffer[i] + m_pDlgB->m_imgBuffer[i])*1.))+1.) * 127.5 ));
 				}
-			} 
+			}
 		}
 		m_pDlgG->RefreshVideo();
 		m_pDlgB->RefreshVideo();
@@ -5184,7 +5188,7 @@ void CML506View::GenDesinusoidLUT() {
 	N2 = g_VideoInfo.img_width;
 	N3 = (m_iShiftBS >> 1);
 	N0 = m_iPLLclks;
-	
+
 	fov1 = 1-cos(pi*N3/N0);
 	fov2 = 1-cos(pi*(N2+N3)/N0);
 	fovH = (fov2 - fov1) * 0.74 / 2;
@@ -5201,7 +5205,7 @@ void CML506View::GenDesinusoidLUT() {
 		index[i] = N2*(pos-fov1)/(fov2-fov1);	// index of pixel locations on sinusoidal space
 //		fprintf(fp, "%d,%d\n", i, index[i]);
 	}
-	
+
 	if (g_VideoInfo.DesinusoidLen != ND) {
 		if (g_VideoInfo.LeftIndex  != NULL) delete [] g_VideoInfo.LeftIndex;
 		if (g_VideoInfo.RightIndex != NULL) delete [] g_VideoInfo.RightIndex;
@@ -5237,7 +5241,7 @@ void CML506View::GenDesinusoidLUT() {
 //	fclose(fp);
 }
 
-void CML506View::InterleaveLines() 
+void CML506View::InterleaveLines()
 {
 	BYTE    stepSize;
 	int     rampLow, rampHigh;
@@ -5266,7 +5270,7 @@ void CML506View::InterleaveLines()
 	g_objVirtex5BMD.SetScannerParams(g_hDevVirtex5, m_fovH, m_fovV, m_forwardLines, m_rampOffset, stepSize, m_bInterleaveLines);
 }
 
-void CML506View::ZeroBackward() 
+void CML506View::ZeroBackward()
 {
 	m_bZeroBackward = !m_bZeroBackward;
 
@@ -5275,7 +5279,7 @@ void CML506View::ZeroBackward()
 	g_objVirtex5BMD.UpdateSlowScanner(g_hDevVirtex5, m_bZeroBackward);
 }
 
-void CML506View::SymmetricRamp() 
+void CML506View::SymmetricRamp()
 {
 	int stepSize;
 
@@ -5305,7 +5309,7 @@ void CML506View::EnableTracking()
 	g_objVirtex5BMD.EnableMirrorTracking(g_hDevVirtex5, m_bEnableTracking);
 }
 
-void CML506View::ResetTrackingPos() 
+void CML506View::ResetTrackingPos()
 {
 	m_iTrackY = 0;
 	m_iTrackY = 0;
@@ -5317,7 +5321,7 @@ void CML506View::ResetTrackingPos()
 	g_objVirtex5BMD.ApplyTrackingPos(g_hDevVirtex5, m_iTrackY, m_iTrackY, m_bRotate45);
 }
 
-void CML506View::UpdateScannerParams() 
+void CML506View::UpdateScannerParams()
 {
 	CString        msg;
 	int            stepSize;

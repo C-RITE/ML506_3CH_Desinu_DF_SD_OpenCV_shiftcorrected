@@ -40,6 +40,7 @@ DIAG_DMA          g_dma;
 VIDEO_INFO        g_VideoInfo;
 
 CString           g_dataReceived;
+CView							*g_viewMsgVideo;
 //CView            *g_viewVideo;
 CView            *g_viewMain;
 
@@ -89,7 +90,7 @@ int g_Save8bitBitmap(int imgW, int imgH, BYTE* image, char *bmpName)
 	bmpfileheader[ 4] = (unsigned char)(filesize>>16);
 	bmpfileheader[ 5] = (unsigned char)(filesize>>24);
 
-	
+
 	bmpfileheader[10] = (unsigned char)(offSize);
 	bmpfileheader[11] = (unsigned char)(offSize>> 8);
 	bmpfileheader[12] = (unsigned char)(offSize>>16);
@@ -137,7 +138,7 @@ void g_GetAppSystemTime(int *hours, int *minutes, int *seconds, double *millisec
 	l_hours = (int)(l_time.QuadPart/3600);
 	l_time.QuadPart = l_time.QuadPart - (l_hours * 3600);
 	l_minutes = (int)(l_time.QuadPart/60);
-	l_seconds = (int)(l_time.QuadPart - (l_minutes * 60));			
+	l_seconds = (int)(l_time.QuadPart - (l_minutes * 60));
 	l_milliseconds = (double) (1000.0 * (l_tick.QuadPart % g_ticksPerSecond.QuadPart) / g_ticksPerSecond.QuadPart);
 
 	*hours        = l_hours;
@@ -155,9 +156,9 @@ void CALLBACK TimeoutTimerFunc(UINT wTimerID, UINT msg, DWORD dwUser, DWORD pPar
 	BYTE   *imageRef, *imageTar;
 
 	if (g_bGrabStart) {
-		if (g_objVirtex5BMD.DetectSyncSignals(g_hDevVirtex5) == TRUE) 
+		if (g_objVirtex5BMD.DetectSyncSignals(g_hDevVirtex5) == TRUE)
 			timeout_cnt = 0;
-		else 
+		else
 			timeout_cnt ++;
 
 		if (timeout_cnt >= 3) {
@@ -172,7 +173,7 @@ void CALLBACK TimeoutTimerFunc(UINT wTimerID, UINT msg, DWORD dwUser, DWORD pPar
 			AfxMessageBox("Sync signals are lost. Video sampling is stopped.");
 		}
 	}
-} 
+}
 
 // front porch will be adjusted in every five seconds
 void CALLBACK HsyncAdjustment(UINT wTimerID, UINT msg, DWORD dwUser, DWORD pParam, DWORD dw2)
@@ -218,14 +219,14 @@ void CALLBACK HsyncAdjustment(UINT wTimerID, UINT msg, DWORD dwUser, DWORD pPara
 	}
 
 	delete [] fname;
-} 
+}
 
 
 
 
 /*
 // possibly more operations need to be added here
-void g_SplitImage(BYTE *imgBuffer, int width, int height) 
+void g_SplitImage(BYTE *imgBuffer, int width, int height)
 {
 	int    j, k, idx;
 
@@ -236,7 +237,7 @@ void g_SplitImage(BYTE *imgBuffer, int width, int height)
 	}
 }
 */
-void g_CalcHistogram(BYTE *imgBuffer, int width, int height, BOOL bDualCh, long *hist) 
+void g_CalcHistogram(BYTE *imgBuffer, int width, int height, BOOL bDualCh, long *hist)
 {
 	int    i, j, k, idx, chIdx, lb, rb, midX, imax, offset, pixMax, pixMin;
 	long   sum_sq, sum_val;
@@ -269,7 +270,7 @@ void g_CalcHistogram(BYTE *imgBuffer, int width, int height, BOOL bDualCh, long 
 					pixMin = (pixMin<imgBuffer[idx+i]) ? pixMin : imgBuffer[idx+i];
 				}
 			}
-				
+
 			hist[0] = 0;
 			hist[255] = 0;
 
@@ -464,19 +465,19 @@ UINT g_GrabVideo(LPVOID pParam)
 */
 	g_VideoInfo.nVideoCounter = 0;
 
-    // Get input for user 
+    // Get input for user
     wCount    = g_VideoInfo.tlp_counts;
     fIsRead   = FALSE;
 	//dwOptions = DMA_FROM_DEVICE;
 	dwOptions = DMA_TO_FROM_DEVICE;
-    
-	// Get the max payload size from the device 
+
+	// Get the max payload size from the device
     wSize     = g_objVirtex5BMD.DMAGetMaxPacketSize(g_hDevVirtex5, fIsRead) / sizeof(UINT32);
     g_dwTotalCount = (DWORD)wCount * (DWORD)wSize;
 
-	
+
 	g_objVirtex5BMD.DIAG_DMAClose(g_hDevVirtex5, &g_dma);
-    // Open DMA handle 
+    // Open DMA handle
 	BZERO(g_dma);
     dwStatus = g_objVirtex5BMD.VIRTEX5_DMAOpen(g_hDevVirtex5, &g_dma.pBuf, dwOptions, g_dwTotalCount*sizeof(UINT32)*3, &g_dma.hDma);
 
@@ -491,7 +492,7 @@ UINT g_GrabVideo(LPVOID pParam)
     bTrafficClass = 0;
     g_objVirtex5BMD.VIRTEX5_DMADevicePrepare(g_dma.hDma, fIsRead, wSize, wCount, u32Pattern, fEnable64bit, bTrafficClass);
 
-    // Enable DMA interrupts (if not polling) 
+    // Enable DMA interrupts (if not polling)
     g_objVirtex5BMD.VIRTEX5_DmaIntEnable(g_hDevVirtex5, fIsRead);
 
     if (!g_objVirtex5BMD.VIRTEX5_IntIsEnabled(g_hDevVirtex5))
@@ -518,7 +519,7 @@ UINT g_GrabVideo(LPVOID pParam)
 //	SavePCIeRegisters();
 
 	g_objVirtex5BMD.AOShutter(g_hDevVirtex5, TRUE);
-	
+
 	g_VideoInfo.frameCounter = 0;
 	do {
 		::WaitForSingleObject(WaitForEvents, 10);
@@ -556,7 +557,7 @@ UINT g_GrabVideo(LPVOID pParam)
 	strcpy(fname, "e:\\bs.bmp");
 	g_Save8bitBitmap(width, g_VideoInfo.img_height, g_VideoInfo.video_out, fname);
 	delete [] fname;
-*/	
+*/
 
 
 	return 0;
@@ -569,12 +570,12 @@ DWORD WINAPI CML506Doc::ThreadLoadData2FPGA(LPVOID pParam)
 	HANDLE fpgaHandles[2];
 	unsigned short  *lut_loc_buf;
 	int    i, deltax, nx;
-	
+
 	fpgaHandles[0] = g_EventLoadStim;
 	fpgaHandles[1] = g_EventLoadLUT;
 
 	do {
-		// waiting for event 
+		// waiting for event
 		switch (::MsgWaitForMultipleObjects(2, fpgaHandles, FALSE, INFINITE, QS_ALLEVENTS)) {
 		case WAIT_OBJECT_0:
 			g_objVirtex5BMD.AppLoadStimulus(g_hDevVirtex5, g_VideoInfo.stim_buffer, g_VideoInfo.stim_nx, g_VideoInfo.stim_ny, STIM_CHALL);
@@ -605,6 +606,88 @@ DWORD WINAPI CML506Doc::ThreadLoadData2FPGA(LPVOID pParam)
 	return 0;
 }
 
+DWORD WINAPI CML506Doc::ThreadNetMsgProcess(LPVOID pParam)
+{
+	CML506Doc *parent = (CML506Doc *)pParam;
+	CButton *wnd;
+	float fGain = -1.;
+	int i,len,ind, dewarp_sx, dewarp_sy;
+	CString msg, initials, ext, folder;
+	char command;
+	char seps[] = "\t", seps1[] = ","; //for parsing matlab sequence
+	BOOL bUpdate, bLoop, bTrigger;
+
+	while(TRUE){
+		switch(::WaitForMultipleObjects(3, parent->m_eNetMsg, FALSE, INFINITE)) {//Process the message
+		case WAIT_OBJECT_0: //AO message
+			msg = parent->m_strNetRecBuff[0];
+			command = msg[0];
+			msg = msg.Right(msg.GetLength()-1);
+			switch (command) {
+				/* Not sure if still need to accept commands from AO but this is copy
+				case 'C': //Create directory with new prefix
+					initials = msg.Left(msg.Find("\\",0)); //gives the prefix
+					g_viewMsgVideo->SetDlgItemText(IDC_EDITBOX_PREFIX, initials);
+					CreateDirectory((g_ML506Params.VideoFolderPath+initials), NULL);
+					parent->m_VideoFolder = g_ML506Params.VideoFolderPath +msg;
+					CreateDirectory(parent->m_VideoFolder, NULL);
+					initials.Empty();
+					break;
+				case 'G':
+					ind = msg.ReverseFind('\\');
+					g_viewMsgVideo->SetDlgItemText(IDC_EDITBOX_VIDEOLEN, msg.Right(msg.GetLength()-(ind+1)));
+					msg = msg.Left(msg.GetLength() - (msg.GetLength()-ind));
+					ind = msg.ReverseFind('\\');
+					parent->m_videoFileName = msg.Right(msg.GetLength()-(ind+1));
+					ind = parent->m_videoFileName.ReverseFind(_T('_V'));
+					parent->m_bExtCtrl = TRUE;
+					parent->m_nVideoNum = atoi(parent->m_videoFileName.Right(parent->m_videoFileName.GetLength()-(ind+2)));
+					g_viewMsgVideo->PostMessage(WM_MOVIE_SEND, 0, SAVE_VIDEO_FLAG);
+					break;
+				case 'P':
+					msg = g_ML506Params.VideoFolderPath + msg;
+					g_viewMsgVideo->SetDlgItemText(IDL_VIDEO_FILENAME, msg);
+					parent->PlaybackMovie(LPCTSTR(msg));
+					break;
+				case 'D':
+					//write_ScreenText(m_CFtxtfont2,m_CRDefocusValue,text,RGB(255,255,0));
+					break;
+				case 'F':
+					if (parent->m_bPlayback == TRUE)
+						g_AnimateCtrl->Seek(atoi(msg));
+					break;
+				case 'U': //start stabilization
+					if (parent->m_bPlayback == TRUE)
+						parent->StopPlayback();
+					if (parent->m_bCameraConnected == FALSE)
+						parent->OnCameraConnect();
+					g_viewMsgVideo->SendMessage(WM_MOVIE_SEND, 0, STABILIZATION_GO);
+					break;
+				case 'O': //stop stabilization
+					parent->OnStablizeSuspend();
+					break;
+				case 'E': //reset reference frame
+					g_viewMsgVideo->SendMessage(WM_MOVIE_SEND, 0, STABILIZATION_GO);
+					break;
+				default:
+					break;*/
+				
+			break;
+		}
+		case WAIT_OBJECT_0 + 1: // getting remote controlled by IGUIDE
+			msg = parent->m_strNetRecBuff[2];
+			command = msg[0];
+			msg = msg.Right(msg.GetLength()-1);
+			switch (command) {
+
+				case 'V': //record video
+					g_viewMain->PostMessage(WM_MESSAGE_SEND, IGUIDE_MESSAGE_SAVE,0);
+				break;
+		}
+	}
+	msg.Empty();
+	}
+}
 
 
 IMPLEMENT_DYNCREATE(CML506Doc, CDocument)
@@ -637,7 +720,7 @@ CML506Doc::CML506Doc()
 	twoLines = FALSE;		// no interlace
 
 	// force the smallest of the ramp signal to 0
-	if (twoLines) 
+	if (twoLines)
 		vOffset  = (int)(1.0*fovV*vDivider/16+0.5);
 	else
 		vOffset  = (int)(1.0*fovV*vDivider/32+0.5);
@@ -680,10 +763,10 @@ CML506Doc::CML506Doc()
 	g_VideoInfo.fsbs_buffer     = new unsigned char [2048*1024];
 	g_VideoInfo.desi_buffer     = new unsigned char [2048*1024];
 	g_VideoInfo.stim_buffer     = new unsigned short [g_VideoInfo.img_width*g_VideoInfo.img_height];
-	if (g_VideoInfo.video_in == NULL || g_VideoInfo.video_out == NULL || g_VideoInfo.stim_buffer == NULL) 
+	if (g_VideoInfo.video_in == NULL || g_VideoInfo.video_out == NULL || g_VideoInfo.stim_buffer == NULL)
 		AfxMessageBox("Error! Can't allocate memory space for video.");
 	g_VideoInfo.weightsRed      = new UINT32 [1024];
-	g_VideoInfo.weightsIR       = new UINT32 [1024];	
+	g_VideoInfo.weightsIR       = new UINT32 [1024];
 
 	DWORD dwStatus, dwResult;
 	dwStatus = WDC_CallKerPlug(g_hDevVirtex5, KP_VRTX5_MSG_DATA, &g_VideoInfo, &dwResult);
@@ -786,7 +869,7 @@ CML506Doc::CML506Doc()
 //return;
 
 	g_objVirtex5BMD.SetScannerParams(g_hDevVirtex5, fovH, fovV,  vDivider, vOffset, stepSize, twoLines);
-	
+
 	g_VideoInfo.fovH           = fovH;
 	g_VideoInfo.fovV           = fovV;
 	g_VideoInfo.fLines         = vDivider;
@@ -803,6 +886,57 @@ CML506Doc::CML506Doc()
 	g_imgBuffDF = NULL;
 	g_imgBuffSD = NULL;
 	g_bSampleSW = FALSE;
+	
+	//Enable network message processing thread and create network listening sockets for AO and Matlab
+	m_eNetMsg = new HANDLE[2];
+	m_eNetMsg[0] = CreateEvent(NULL, FALSE, FALSE, "ICANDI_GUI_NETCOMMMSGAO_EVENT");
+	if (!m_eNetMsg[0]) {
+		AfxMessageBox("Failed to create an event for monitoring AO Comm", MB_ICONEXCLAMATION);
+		return;
+	}
+	m_eNetMsg[2] = CreateEvent(NULL, FALSE, FALSE, "ICANDI_GUI_NETCOMMMSGIGUIDE_EVENT");
+	if (!m_eNetMsg[1]) {
+		AfxMessageBox("Failed to create an event for monitoring IGUIDE Comm", MB_ICONEXCLAMATION);
+		return;
+	}
+
+	m_strNetRecBuff = new CString[2];
+	m_ncListener_AO = NULL;
+	m_ncListener_IGUIDE = NULL;
+
+	if (CSockClient::SocketInit() != 0)
+	{
+		AfxMessageBox("Unable to initialize Windows Sockets", MB_OK|MB_ICONERROR, 0);
+		return;
+	}
+	//Create a listener for AO
+	m_ncListener_AO = new CSockListener(&m_strNetRecBuff[0], &m_eNetMsg[0]);
+	if (!m_ncListener_AO->InitPort("10.7.216.212", 23))
+	//if (!m_ncListener_AO->InitPort("153.90.109.35", 23))
+	{
+	//	AfxMessageBox("Unable to Open port 23 for AO comm", MB_OK|MB_ICONERROR, 0);
+	//	return;
+	}
+	else if (!m_ncListener_AO->Listen())
+	{
+	//	AfxMessageBox("Unable to Listen on port 23 for AO comm", MB_OK|MB_ICONERROR, 0);
+	//	return;
+	}
+	//Create a listener for IGUIDE
+	m_ncListener_IGUIDE = new CSockListener(&m_strNetRecBuff[2], &m_eNetMsg[1]);
+	if (!m_ncListener_IGUIDE->InitPort("127.0.0.1", 1400))
+	{
+		AfxMessageBox("Unable to Open port 1400 for IGUIDE comm", MB_OK|MB_ICONERROR, 0);
+	//	return;
+	}
+	else if (!m_ncListener_IGUIDE->Listen())
+	{
+		AfxMessageBox("Unable to Listen on port 1400 for IGUIDE comm", MB_OK|MB_ICONERROR, 0);
+	//	return;
+	}
+
+	thd_handle[0] = CreateThread(NULL, 0, ThreadNetMsgProcess, this, 0, &thdid_handle[0]);
+	SetThreadPriority(thd_handle[0], THREAD_PRIORITY_NORMAL);
 }
 
 CML506Doc::~CML506Doc()
@@ -835,6 +969,11 @@ CML506Doc::~CML506Doc()
 		delete [] g_imgBuffDF;
 		delete [] g_imgBuffSD;
 	}
+	delete m_ncListener_AO;
+	delete m_ncListener_IGUIDE;
+	CloseHandle(m_eNetMsg[0]);
+	CloseHandle(m_eNetMsg[1]);
+	delete [] m_eNetMsg;
 
 	//AfxMessageBox("Exit: CML506Doc::~CML506Doc()");
 
@@ -888,7 +1027,7 @@ void CML506Doc::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // CML506Doc commands
 
-void CML506Doc::OnCameraConnect() 
+void CML506Doc::OnCameraConnect()
 {
 //	POINT  point;
 	int    x1, x2, stripH, channelID;
@@ -922,19 +1061,19 @@ void CML506Doc::OnCameraConnect()
 	UpdateAllViews(NULL, USER_MESSAGE_CONNECT, NULL);
 }
 
-void CML506Doc::OnCameraDisconnect() 
+void CML506Doc::OnCameraDisconnect()
 {
-	// TODO: Add your command handler code here	
+	// TODO: Add your command handler code here
 	g_bGrabStart = FALSE;
 	UpdateAllViews(NULL, USER_MESSAGE_DISCONNECT, NULL);
 }
 
-void CML506Doc::OnUpdateCameraConnect(CCmdUI* pCmdUI) 
-{	
+void CML506Doc::OnUpdateCameraConnect(CCmdUI* pCmdUI)
+{
 	pCmdUI->Enable(!g_bGrabStart && g_bDCFloaded);
 }
 
-void CML506Doc::OnUpdateCameraDisconnect(CCmdUI* pCmdUI) 
+void CML506Doc::OnUpdateCameraDisconnect(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable(g_bGrabStart && g_bDCFloaded);
 }
@@ -957,14 +1096,14 @@ BOOL CML506Doc::Load8BITbmp(CString filename, BYTE *stim_buffer, int *width, int
 
 	CBitmap *pBmp = bmp.FromHandle(hBmp);
 	pBmp->GetBitmap(&bitmap);
-	
+
 	if (bitmap.bmHeight>361 || bitmap.bmWidth>361) {
 		AfxMessageBox("Stimulus Pattern is too big. Set width<361 and height<361", MB_ICONEXCLAMATION);
 		return FALSE;
 	}
 
 	buffer = new BYTE [bitmap.bmWidthBytes*bitmap.bmHeight];
-	
+
 	retVal = pBmp->GetBitmapBits(bitmap.bmWidthBytes*bitmap.bmHeight, buffer);
 
 	n = bitmap.bmWidthBytes/bitmap.bmWidth;
@@ -1039,7 +1178,7 @@ void CML506Doc::GenSinCurve(float amp, float freq)
 	unsigned short *sinBuffer, stemp;
 	float           scaledAmp;
 
-	length    = 0x4000;  
+	length    = 0x4000;
 	sinBuffer = new unsigned short [length];
 
 	scaledAmp = amp * length / 2;
@@ -1075,9 +1214,9 @@ void CML506Doc::GenerateFileID(CString videoName, int *index) {
 		bFound = find.FindNextFile();
 
 		CString strFileName;
-		if(find.IsDirectory()) 
+		if(find.IsDirectory())
 			continue;
-		
+
 		strFileName = find.GetFileName();
 		strFileName.Trim();
 
@@ -1093,7 +1232,7 @@ void CML506Doc::GenerateFileID(CString videoName, int *index) {
 	*index = maxID + 1;
 }
 
-void CML506Doc::OnSetupDesinusoid() 
+void CML506Doc::OnSetupDesinusoid()
 {
 	CCalDesinu   dlg;
 	char         temp[80];
@@ -1107,29 +1246,29 @@ void CML506Doc::OnSetupDesinusoid()
 		filename.TrimRight(' ');
 		if (filename.GetLength() == 0) return;
 
-		// get ICANDI parameter .ini file name
+		// get ML506 parameter .ini file name
 		filename = _T("\\AppParams.ini");
-		filename = g_ICANDIParams.m_strConfigPath + filename;
+		filename = g_ML506Params.m_strConfigPath + filename;
 
-		g_ICANDIParams.fnameLUT = dlg.m_LUTfname;
+		g_ML506Params.fnameLUT = dlg.m_LUTfname;
 		// desinusoiding look up table
-		::WritePrivateProfileString("FrameInfo", "DesinusoidLUT", g_ICANDIParams.fnameLUT, filename);
+		::WritePrivateProfileString("FrameInfo", "DesinusoidLUT", g_ML506Params.fnameLUT, filename);
 		// Pixels Per Degree X
-		g_ICANDIParams.PixPerDegX = (float)dlg.m_PixPerDegX;
-		sprintf_s(temp, "%1.3f", g_ICANDIParams.PixPerDegX);
+		g_ML506Params.PixPerDegX = (float)dlg.m_PixPerDegX;
+		sprintf_s(temp, "%1.3f", g_ML506Params.PixPerDegX);
 		::WritePrivateProfileString("ApplicationInfo", "PixelsperDegX", temp, filename);
-		g_Motion_ScalerX = (float)(g_ICANDIParams.VRangePerDegX*128./g_ICANDIParams.PixPerDegX);
+		g_Motion_ScalerX = (float)(g_ML506Params.VRangePerDegX*128./g_ML506Params.PixPerDegX);
 		// Pixels Per Degree Y
-		g_ICANDIParams.PixPerDegY = (float)dlg.m_PixPerDegY;
-		sprintf_s(temp, "%1.3f", g_ICANDIParams.PixPerDegY);
+		g_ML506Params.PixPerDegY = (float)dlg.m_PixPerDegY;
+		sprintf_s(temp, "%1.3f", g_ML506Params.PixPerDegY);
 		::WritePrivateProfileString("ApplicationInfo", "PixelsperDegY", temp, filename);
-		g_Motion_ScalerY = (float)(g_ICANDIParams.VRangePerDegY*128./g_ICANDIParams.PixPerDegY);*/
+		g_Motion_ScalerY = (float)(g_ML506Params.VRangePerDegY*128./g_ML506Params.PixPerDegY);*/
 	}
 //	SetCurrentDirectory(m_strCurrentDir);
 }
 
-void CML506Doc::OnUpdateSetupDesinusoid(CCmdUI* pCmdUI) 
+void CML506Doc::OnUpdateSetupDesinusoid(CCmdUI* pCmdUI)
 {
-	// TODO: Add your command update UI handler code here	
+	// TODO: Add your command update UI handler code here
 	pCmdUI->Enable(g_bDCFloaded);
 }
