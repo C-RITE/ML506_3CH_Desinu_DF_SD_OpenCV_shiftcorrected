@@ -630,6 +630,7 @@ CML506View::CML506View()
 	m_adcVals[0x12] = 0xB8;		// Hsync control
 	m_adcVals[0x14] = 0xB8;		// Vsync control
 	m_adcVals[0x18] = 0xF0;		// clamping control
+	m_adcVals[0x19] = 0x02;		// clamping placement
 	m_adcVals[0x1A] = 0x01;		// clamping duration
 	m_adcVals[0x1B] = 0x1B;		// clamping trigger
 
@@ -2903,6 +2904,7 @@ void CML506View::OnLoadDcf()
 	m_adcVals[0x12] = tmpD[0x12];		// Hsync control
 	m_adcVals[0x14] = tmpD[0x14];		// Vsync control
 	m_adcVals[0x18] = tmpD[0x18];		// clamping control
+	m_adcVals[0x19] = tmpD[0x19];		// clamping placement
 	m_adcVals[0x1A] = tmpD[0x1A];		// clamping duration
 	m_adcVals[0x1B] = tmpD[0x1B];		// clamping trigger
 
@@ -3583,7 +3585,7 @@ void CML506View::UpdateGuiControls()
 	m_edtContrastB.SetWindowText(msg);
 
 
-	g_VideoInfo.offset_pixel = 10;
+	g_VideoInfo.offset_pixel = 2;
 	m_scrOffsetX.SetScrollPos(g_VideoInfo.offset_pixel);
 	m_scrOffsetY.SetScrollPos(15);
 	regData1 = m_scrOffsetX.GetScrollPos();
@@ -3777,7 +3779,16 @@ int CML506View::UpdateRuntimeRegisters()
 		Sleep(1);
 	}
 
-	// clamping duratio
+	// clamping placement
+	m_regAddr = 0x19; m_regVal = m_adcVals[0x19];
+	ret = ReadWriteI2CRegister(FALSE, 0x4c000000);
+	Sleep(1);
+	if (ret != 0) {
+		ret = ReadWriteI2CRegister(FALSE, 0x4c000000);
+		Sleep(1);
+	}
+
+	// clamping duration
 	m_regAddr = 0x1A; m_regVal = m_adcVals[0x1A];
 	ret = ReadWriteI2CRegister(FALSE, 0x4c000000);
 	Sleep(1);

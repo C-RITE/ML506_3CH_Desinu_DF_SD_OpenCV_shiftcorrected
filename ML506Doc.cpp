@@ -617,8 +617,9 @@ DWORD WINAPI CML506Doc::ThreadNetMsgProcess(LPVOID pParam)
 	char seps[] = "\t", seps1[] = ","; //for parsing matlab sequence
 	BOOL bUpdate, bLoop, bTrigger;
 
+
 	while(TRUE){
-		switch(::WaitForMultipleObjects(3, parent->m_eNetMsg, FALSE, INFINITE)) {//Process the message
+		switch(::WaitForMultipleObjects(2, parent->m_eNetMsg, FALSE, INFINITE)) {//Process the message
 		case WAIT_OBJECT_0: //AO message
 			msg = parent->m_strNetRecBuff[0];
 			command = msg[0];
@@ -675,12 +676,13 @@ DWORD WINAPI CML506Doc::ThreadNetMsgProcess(LPVOID pParam)
 			break;
 		}
 		case WAIT_OBJECT_0 + 1: // getting remote controlled by IGUIDE
-			msg = parent->m_strNetRecBuff[2];
+			msg = parent->m_strNetRecBuff[1];
 			command = msg[0];
 			msg = msg.Right(msg.GetLength()-1);
 			switch (command) {
 
 				case 'V': //record video
+					
 					g_viewMain->PostMessage(WM_MESSAGE_SEND, IGUIDE_MESSAGE_SAVE,0);
 				break;
 		}
@@ -894,7 +896,7 @@ CML506Doc::CML506Doc()
 		AfxMessageBox("Failed to create an event for monitoring AO Comm", MB_ICONEXCLAMATION);
 		return;
 	}
-	m_eNetMsg[2] = CreateEvent(NULL, FALSE, FALSE, "ICANDI_GUI_NETCOMMMSGIGUIDE_EVENT");
+	m_eNetMsg[1] = CreateEvent(NULL, FALSE, FALSE, "ICANDI_GUI_NETCOMMMSGIGUIDE_EVENT");
 	if (!m_eNetMsg[1]) {
 		AfxMessageBox("Failed to create an event for monitoring IGUIDE Comm", MB_ICONEXCLAMATION);
 		return;
@@ -911,7 +913,7 @@ CML506Doc::CML506Doc()
 	}
 	//Create a listener for AO
 	m_ncListener_AO = new CSockListener(&m_strNetRecBuff[0], &m_eNetMsg[0]);
-	if (!m_ncListener_AO->InitPort("10.7.216.212", 23))
+	if (!m_ncListener_AO->InitPort("192.168.0.1", 23))
 	//if (!m_ncListener_AO->InitPort("153.90.109.35", 23))
 	{
 	//	AfxMessageBox("Unable to Open port 23 for AO comm", MB_OK|MB_ICONERROR, 0);
@@ -923,7 +925,7 @@ CML506Doc::CML506Doc()
 	//	return;
 	}
 	//Create a listener for IGUIDE
-	m_ncListener_IGUIDE = new CSockListener(&m_strNetRecBuff[2], &m_eNetMsg[1]);
+	m_ncListener_IGUIDE = new CSockListener(&m_strNetRecBuff[1], &m_eNetMsg[1]);
 	if (!m_ncListener_IGUIDE->InitPort("127.0.0.1", 1400))
 	{
 		AfxMessageBox("Unable to Open port 1400 for IGUIDE comm", MB_OK|MB_ICONERROR, 0);
