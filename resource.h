@@ -334,6 +334,7 @@
 #define IDR_HTML_CALDESINU              584
 #define IDR_HTML_CALDESINU1             586
 #define ID_CHECK_SW_DF_SD               587
+#define ID_CHECK_DISC					588
 #define IDC_DIGISYNC_HINPUT             1000
 #define IDC_DIGISYNC_HFORMAT            1001
 #define IDC_DIGISYNC_HPOLARITY          1002

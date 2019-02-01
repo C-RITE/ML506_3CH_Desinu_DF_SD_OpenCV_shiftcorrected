@@ -128,6 +128,7 @@ private:
 	CButton       m_chkChannelG;
 	CButton       m_chkChannelB;
 	CButton       m_chkChannelSW;
+	CButton		  m_chkDiscardBlinks;
 	
 	CStatic       m_frames;
 	CTabCtrl      m_tabPCIe;

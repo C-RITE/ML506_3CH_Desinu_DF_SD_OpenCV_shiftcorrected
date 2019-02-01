@@ -873,6 +873,11 @@ void CML506View::CreateGrabberParams()
 	m_chkChannelSW.Create("Switch to DF/SD", WS_CHILD|BS_CHECKBOX|!WS_VISIBLE, rect, this, ID_CHECK_SW_DF_SD);
 	m_chkChannelSW.SetCheck(0);
 
+	rect.left =10;
+	rect.right =rect.left +DLG_ITEM_WIDTH*1.5;
+	m_chkDiscardBlinks.Create(" Discard Blinks: MPV<45", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_DISC);
+	m_chkDiscardBlinks.SetCheck(0);
+
 	rect.left   = 10;
 	rect.right  = rect.left + DLG_ITEM_WIDTH*2.5;
 	rect.top    = rect.bottom + 15;
@@ -1699,6 +1704,7 @@ void CML506View::ShowTabItems(int index)
 	m_chkChannelG.ShowWindow(SW_HIDE);
 	m_chkChannelB.ShowWindow(SW_HIDE);
 	m_chkChannelSW.ShowWindow(SW_HIDE);
+	m_chkDiscardBlinks.ShowWindow(SW_HIDE);
 	m_chkBidirection.ShowWindow(SW_HIDE);
 //	m_lblBlankPixels.ShowWindow(SW_HIDE);
 //	m_scrBlankPixels.ShowWindow(SW_HIDE);
@@ -1827,6 +1833,7 @@ void CML506View::ShowTabItems(int index)
 		m_chkChannelG.ShowWindow(SW_SHOW);
 		m_chkChannelB.ShowWindow(SW_SHOW);
 		m_chkChannelSW.ShowWindow(m_iVideoNum==3?SW_SHOW:SW_HIDE);
+		m_chkDiscardBlinks.ShowWindow(SW_SHOW);
 		m_chkBidirection.ShowWindow(SW_SHOW);
 	//	m_lblBlankPixels.ShowWindow(SW_SHOW);
 	//	m_scrBlankPixels.ShowWindow(SW_SHOW);
@@ -4043,6 +4050,7 @@ void CML506View::EnableGuiControls(BOOL xfgLoaded)
 		m_chkChannelG.EnableWindow(TRUE);
 		m_chkChannelB.EnableWindow(TRUE);
 		m_chkChannelSW.EnableWindow(m_iVideoNum==3?TRUE:FALSE);
+		m_chkDiscardBlinks.EnableWindow(TRUE);
 		m_chkBidirection.EnableWindow(TRUE);
 		m_scrResonant.EnableWindow(TRUE);
 		m_scrGalvo.EnableWindow(TRUE);
@@ -4099,6 +4107,7 @@ void CML506View::EnableGuiControls(BOOL xfgLoaded)
 		m_chkChannelB.EnableWindow(FALSE);
 		m_chkChannelSW.EnableWindow(FALSE);
 		m_chkChannelSW.ShowWindow(SW_HIDE);
+		m_chkDiscardBlinks.EnableWindow(FALSE);
 		m_chkBidirection.EnableWindow(FALSE);
 
 		m_scrResonant.EnableWindow(FALSE);
@@ -4198,6 +4207,7 @@ void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		m_chkChannelG.EnableWindow(FALSE);
 		m_chkChannelB.EnableWindow(FALSE);
 		m_chkChannelSW.EnableWindow(m_iVideoNum==3?TRUE:FALSE);
+		m_chkDiscardBlinks.EnableWindow(FALSE);
 		break;
 	case USER_MESSAGE_DISCONNECT:
 		m_scrImgSizeX.EnableWindow(TRUE);
@@ -4210,6 +4220,7 @@ void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		m_chkChannelB.EnableWindow(TRUE);
 		m_chkChannelSW.EnableWindow(m_iVideoNum==3?TRUE:FALSE);
 		m_chkChannelSW.ShowWindow(m_iVideoNum==3?TRUE:FALSE);
+		m_chkDiscardBlinks.EnableWindow(TRUE);
 		break;
 	default:
 		break;
