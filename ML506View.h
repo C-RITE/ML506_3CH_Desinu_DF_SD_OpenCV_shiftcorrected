@@ -301,6 +301,7 @@ private:
 	BOOL          m_bSampleG;
 	BOOL          m_bSampleB;
 	BOOL          m_bSampleSW;
+	BOOL		  m_bDiscardBlinks;
 
 	BOOL          m_bSymmetricRamp;
 	BOOL          m_bZeroBackward;
@@ -370,6 +371,7 @@ protected:
 	afx_msg void SampleChannelG();
 	afx_msg void SampleChannelB();
 	afx_msg void SampleChannelSW();
+	afx_msg void DiscardBlinks();
 	afx_msg void InterleaveLines();
 	afx_msg void ZeroBackward();
 	afx_msg void SymmetricRamp();

@@ -183,6 +183,7 @@ BEGIN_MESSAGE_MAP(CML506View, CView)
 	ON_BN_CLICKED(ID_CHECK_CH_G, SampleChannelG)
 	ON_BN_CLICKED(ID_CHECK_CH_B, SampleChannelB)
 	ON_BN_CLICKED(ID_CHECK_SW_DF_SD, SampleChannelSW)
+	ON_BN_CLICKED(ID_CHECK_DISC, DiscardBlinks)
 	ON_BN_CLICKED(ID_INTERLEAVE_LINE, InterleaveLines)
 	ON_BN_CLICKED(ID_ZERO_INVERSE, ZeroBackward)
 	ON_BN_CLICKED(ID_SYMMETRIC_RAMP, SymmetricRamp)
@@ -242,6 +243,7 @@ CML506View::CML506View()
 	m_bSampleG       = FALSE;
 	m_bSampleB       = FALSE;
 	m_bSampleSW       = FALSE;
+	m_bDiscardBlinks	=FALSE;
 	m_pDlgR          = NULL;
 	m_pDlgG          = NULL;
 	m_pDlgB          = NULL;
@@ -4482,16 +4484,22 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 			g_VideoInfo.bVideoSaving = FALSE;
 			SetDlgItemText(ID_VIDEO_SAVE, "Save Video");
 		} else {
-			m_aviHandlerR.write(frameR);
+			float tempMean = mean(frameR).val[0];
+			if((m_bDiscardBlinks) && (tempMean<45)){
 
-			if (m_bSampleG)
-					m_aviHandlerG.write(frameG);
+			}else{
+				
+				m_aviHandlerR.write(frameR);
 
-			if (m_bSampleB)
-					m_aviHandlerB.write(frameB);
+				if (m_bSampleG)
+						m_aviHandlerG.write(frameG);
 
-			msg.Format(_T("Stop %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
-			SetDlgItemText(ID_VIDEO_SAVE, msg);
+				if (m_bSampleB)
+						m_aviHandlerB.write(frameB);
+
+				msg.Format(_T("Stop %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
+				SetDlgItemText(ID_VIDEO_SAVE, msg);
+			}
 		}
 
 		break;
@@ -5006,6 +5014,17 @@ void CML506View::SampleChannelSW()
 
 	g_bSampleSW = m_bSampleSW = !m_bSampleSW;
 	m_chkChannelSW.SetCheck(m_bSampleSW);
+}
+
+void CML506View::DiscardBlinks()
+{
+	if(m_bDiscardBlinks){
+		m_chkDiscardBlinks.SetCheck(TRUE);
+	}else{
+		m_chkDiscardBlinks.SetCheck(FALSE);
+	}
+	m_bDiscardBlinks = !m_bDiscardBlinks;
+	
 }
 
 void CML506View::CheckChannelB(BOOL flagB, BOOL bFromGUI) {
