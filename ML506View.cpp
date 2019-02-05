@@ -4486,7 +4486,9 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 		} else {
 			float tempMean = mean(frameR).val[0];
 			if((m_bDiscardBlinks) && (tempMean<45)){
-
+				msg.Format(_T("Discarded %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
+				g_VideoInfo.nVideoCounter --;
+				SetDlgItemText(ID_VIDEO_SAVE, msg);
 			}else{
 				
 				m_aviHandlerR.write(frameR);
@@ -5019,9 +5021,9 @@ void CML506View::SampleChannelSW()
 void CML506View::DiscardBlinks()
 {
 	if(m_bDiscardBlinks){
-		m_chkDiscardBlinks.SetCheck(TRUE);
-	}else{
 		m_chkDiscardBlinks.SetCheck(FALSE);
+	}else{
+		m_chkDiscardBlinks.SetCheck(TRUE);
 	}
 	m_bDiscardBlinks = !m_bDiscardBlinks;
 	
