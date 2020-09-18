@@ -682,8 +682,7 @@ DWORD WINAPI CML506Doc::ThreadNetMsgProcess(LPVOID pParam)
 			switch (command) {
 
 				case 'V': //record video
-					
-					g_viewMain->PostMessage(WM_MESSAGE_SEND, IGUIDE_MESSAGE_SAVE,0);
+					g_viewMsgVideo->SendMessage(WM_MESSAGE_SEND,0,IGUIDE_MESSAGE_SAVE);
 				break;
 		}
 	}
@@ -1273,4 +1272,16 @@ void CML506Doc::OnUpdateSetupDesinusoid(CCmdUI* pCmdUI)
 {
 	// TODO: Add your command update UI handler code here
 	pCmdUI->Enable(g_bDCFloaded);
+}
+
+bool CML506Doc::SendNetMessage(CString message){
+	if (m_ncListener_IGUIDE)
+	{
+		char data[256];
+		sprintf(data,"%s", message);
+		int res = m_ncListener_IGUIDE->Send(data, 256,0);
+		if (res>0)
+			return true;
+	}
+	return false;
 }

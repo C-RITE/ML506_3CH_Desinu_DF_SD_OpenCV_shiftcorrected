@@ -877,7 +877,7 @@ void CML506View::CreateGrabberParams()
 
 	rect.left =10;
 	rect.right =rect.left +DLG_ITEM_WIDTH*1.5;
-	m_chkDiscardBlinks.Create(" Discard Blinks: MPV<45", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_DISC);
+	m_chkDiscardBlinks.Create(" Discard Blinks: MPV<30", WS_CHILD|BS_CHECKBOX|WS_VISIBLE, rect, this, ID_CHECK_DISC);
 	m_chkDiscardBlinks.SetCheck(0);
 
 	rect.left   = 10;
@@ -4109,7 +4109,7 @@ void CML506View::EnableGuiControls(BOOL xfgLoaded)
 		m_chkChannelB.EnableWindow(FALSE);
 		m_chkChannelSW.EnableWindow(FALSE);
 		m_chkChannelSW.ShowWindow(SW_HIDE);
-		m_chkDiscardBlinks.EnableWindow(FALSE);
+//		m_chkDiscardBlinks.EnableWindow(FALSE);
 		m_chkBidirection.EnableWindow(FALSE);
 
 		m_scrResonant.EnableWindow(FALSE);
@@ -4209,7 +4209,7 @@ void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		m_chkChannelG.EnableWindow(FALSE);
 		m_chkChannelB.EnableWindow(FALSE);
 		m_chkChannelSW.EnableWindow(m_iVideoNum==3?TRUE:FALSE);
-		m_chkDiscardBlinks.EnableWindow(FALSE);
+	//	m_chkDiscardBlinks.EnableWindow(FALSE);
 		break;
 	case USER_MESSAGE_DISCONNECT:
 		m_scrImgSizeX.EnableWindow(TRUE);
@@ -4222,7 +4222,7 @@ void CML506View::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		m_chkChannelB.EnableWindow(TRUE);
 		m_chkChannelSW.EnableWindow(m_iVideoNum==3?TRUE:FALSE);
 		m_chkChannelSW.ShowWindow(m_iVideoNum==3?TRUE:FALSE);
-		m_chkDiscardBlinks.EnableWindow(TRUE);
+	//	m_chkDiscardBlinks.EnableWindow(TRUE);
 		break;
 	default:
 		break;
@@ -4485,8 +4485,8 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 			SetDlgItemText(ID_VIDEO_SAVE, "Save Video");
 		} else {
 			float tempMean = mean(frameR).val[0];
-			if((m_bDiscardBlinks) && (tempMean<45)){
-				msg.Format(_T("Discarded %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
+			if((m_bDiscardBlinks) && (tempMean<30)){
+				msg.Format(_T("%d/%d: Discarding"), nMsgID, g_VideoInfo.nVideoLength);
 				g_VideoInfo.nVideoCounter --;
 				SetDlgItemText(ID_VIDEO_SAVE, msg);
 			}else{
@@ -4499,7 +4499,7 @@ LRESULT CML506View::OnSendMessage(WPARAM wParam, LPARAM lParam)
 				if (m_bSampleB)
 						m_aviHandlerB.write(frameB);
 
-				msg.Format(_T("Stop %d/%d"), nMsgID, g_VideoInfo.nVideoLength);
+				msg.Format(_T("%d/%d: Stop"), nMsgID, g_VideoInfo.nVideoLength);
 				SetDlgItemText(ID_VIDEO_SAVE, msg);
 			}
 		}

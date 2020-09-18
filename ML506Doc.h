@@ -51,6 +51,7 @@ public:
 	void LoadSymbol(CString filename);
 	void GenSinCurve(float amp, float freq);
 	virtual ~CML506Doc();
+	bool SendNetMessage(CString message);
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
