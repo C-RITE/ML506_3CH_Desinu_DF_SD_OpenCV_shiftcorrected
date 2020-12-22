@@ -4288,7 +4288,7 @@ void CML506View::FrameCounterInVsync()
 
 void CML506View::SaveLiveVideo()
 {
-	CString     text, folder_name, vids;
+	CString     text, folder_name, vids, netmsg,tStamp;
 	SYSTEMTIME  tt;
 	int         i, nLen, fps, fidR, fidG, fidB;
 	CML506Doc*  pDoc = GetDocument();
@@ -4317,8 +4317,8 @@ void CML506View::SaveLiveVideo()
 		}
 
 
-//		GetSystemTime(&tt);
-//		vids.Format(_T("%04d%02d%02d_%02d%02d%02d"), tt.wYear, tt.wMonth, tt.wDay, tt.wHour, tt.wMinute, tt.wSecond);
+		GetSystemTime(&tt);
+		tStamp.Format(_T("%04d_%02d_%02d_%02d_%02d_%02d_"), tt.wYear, tt.wMonth, tt.wDay, tt.wHour, tt.wMinute, tt.wSecond);
 
 		m_edtVideoPrefixR.GetWindowText(text);
 		text.Trim();
@@ -4410,6 +4410,10 @@ void CML506View::SaveLiveVideo()
 		m_rdoLenthInSeconds.EnableWindow(FALSE);
 
 		//SetDlgItemText(ID_VIDEO_SAVE, "Stop Saving...");
+		CString vidLength, initials;
+		m_edtVideoLengthR.GetWindowText(vidLength);
+		netmsg.Format("ICANDI_VIDEOINFO#%s,%s,%s,%s,%s,%03d,%s", "Split", tStamp, "AOSLO", "IR",m_aviFolderNameR+"\\", fidR, vidLength);
+		pDoc->SendNetMessage(netmsg);
 	} else {
 		// close video saving handler
 		if (m_bAviHandlerOnR == TRUE) {
@@ -4437,6 +4441,9 @@ void CML506View::SaveLiveVideo()
 		m_rdoLenthInSeconds.EnableWindow(TRUE);
 
 		g_VideoInfo.bVideoSaving = FALSE;
+		
+	
+
 		SetDlgItemText(ID_VIDEO_SAVE, "Save Video");
 	}
 }

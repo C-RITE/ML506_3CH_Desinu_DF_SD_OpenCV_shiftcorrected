@@ -682,7 +682,7 @@ DWORD WINAPI CML506Doc::ThreadNetMsgProcess(LPVOID pParam)
 			switch (command) {
 
 				case 'V': //record video
-					g_viewMsgVideo->SendMessage(WM_MESSAGE_SEND,0,IGUIDE_MESSAGE_SAVE);
+					g_viewMain->PostMessage(WM_MESSAGE_SEND, IGUIDE_MESSAGE_SAVE,0);
 				break;
 		}
 	}
