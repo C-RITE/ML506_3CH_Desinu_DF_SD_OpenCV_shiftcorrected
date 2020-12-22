@@ -33,13 +33,14 @@ CFolderDlg::CFolderDlg(BOOL HideNewFolderButton, const CString& InitialFolder, C
 
 	if (m_initialFolder.IsEmpty())
 	{
-		TCHAR szDir[MAX_PATH];
+		m_initialFolder = "D:\\Video_Folder";
+		/*TCHAR szDir[MAX_PATH];
 
 		// use current folder
 		if (GetCurrentDirectory(sizeof(szDir) / sizeof(TCHAR), szDir))
 		{
 			m_initialFolder = szDir;
-		}
+		}*/
 	}
 }
 
